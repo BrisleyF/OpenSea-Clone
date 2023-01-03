@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="/css/tiendas.css">
+</head>
+<body>
+    
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <section class="section-one">
+            <div class="fondo">
+                <img src="/image/fondo.png" alt="">
+            </div>
+            <div class="imagen">
+                <img src="/image/nft2.jpg" alt="">
+            </div>
+        </section>
+        <section class="section-two">
+            <div class="contenedor">
+                <div>
+                    <h1>Monitos</h1>
+                </div>
+                <div class="iconos">
+                    <a href="">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-solid fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <p>por <strong>UserName</strong></p>
+            </div>
+        </section>
+        <section class="section-three">
+            <div class="info">
+                <div class="datos">
+                    <p>
+                        <span>Artículos <strong>blabla</strong></span> · 
+                        <span>Creado el <strong>blabla</strong></span> · 
+                        <span>Comisión del creador <strong>blabla</strong></span> </span> · 
+                        <span>Cadena <strong>blabla</strong></span> · 
+                        <span>Categoría <strong>blabla</strong></span> · 
+                    </p>
+                </div>
+                <div class="descripcion">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda nulla harum earum, ipsum eaque aut autem quia, sunt quasi tempora porro voluptate, tempore vitae qui dolorum quod accusamus voluptatem natus.</p>
+                </div>
+                <div class="cifras">
+                    <div>
+                        <strong>13 ETH</strong>
+                        <span>Volumen total</span>
+                    </div>
+                    <div>
+                        <strong>0,025 ETH</strong>
+                        <span>Precio suelo</span>
+                    </div>
+                    <div>
+                        <strong>0,011 WETH</strong>
+                        <span>Volumen total</span>
+                    </div>
+                    <div>
+                        <strong>36%</strong>
+                        <span>Anunciado</span>
+                    </div>
+                    <div>
+                        <strong>80</strong>
+                        <span>Propietarios</span>
+                    </div>
+                    <div>
+                        <strong>59%</strong>
+                        <span>Propietarios únicos</span>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <ul class="lista">
+                        <li>
+                            <a href="">Artículos</a>
+                        </li>
+                        <li>
+                            <a href="">Análisis</a>
+                        </li>
+                        <li>
+                            <a href="">Actividad</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <section class="section-four">
+            <div class="one">
+                <div class="contenedor">
+                    <form action="/buscar" method="get">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                        <input type="text" name="buscar" id="buscar" placeholder="Buscar por nombre o atributo">
+                        <button type="submit"></button>
+                    </form>  
+                </div>
+                <div>
+                    <select name="" id="">
+                        <option value="Anunciado recientemente">Anunciado recientemente</option>
+                        <option value="Creado recientemente">Creado recientemente</option>
+                        <option value="Vendido recientemente">Vendido recientemente</option>
+                        <option value="Recibido recientemente">Recibido recientemente</option>
+                        <option value="Finaliza pronto">Finaliza pronto</option>
+                        <option value="Precio de menor a mayor" selected>Precio de menor a mayor</option>
+                        <option value="Precio de mayor a menor">Precio de mayor a menor</option>
+                    </select>
+                </div>
+                <div>
+                    <button>
+                        <a href="">Hacer oferta de colección</a>
+                    </button>
+                </div>
+            </div>
+            <div class="two">
+                <div class="items">
+                    <p>146 items</p>
+                </div>
+                <div class="coleccion">
+                    <div class="card-2">
+                        <div class="contenedor-img">
+                            <a href="#">
+                                <img src="/image/nft.jpg" alt=""> 
+                            </a>
+                        </div>
+                        <div class="info">
+                            <p>Mono #010</p>
+                            <p>Precio: 0.5 ETH</p>
+                            <p>Termina en 5 horas</p>
+                            <button>Add to cart</button>
+                        </div>
+                    </div>
+                    <div class="card-2">
+                        <div class="contenedor-img">
+                            <a href="#">
+                                <img src="/image/nft.jpg" alt=""> 
+                            </a>
+                        </div>
+                        <div class="info">
+                            <p>Mono #010</p>
+                            <p>Precio: 0.5 ETH</p>
+                            <p>Termina en 5 horas</p>
+                            <button>Add to cart</button>
+                        </div>
+                    </div>
+                    <div class="card-2">
+                        <div class="contenedor-img">
+                            <a href="#">
+                                <img src="/image/nft.jpg" alt=""> 
+                            </a>
+                        </div>
+                        <div class="info">
+                            <p>Mono #010</p>
+                            <p>Precio: 0.5 ETH</p>
+                            <p>Termina en 5 horas</p>
+                            <button>Add to cart</button>
+                        </div>
+                    </div>
+                    <div class="card-2">
+                        <div class="contenedor-img">
+                            <a href="#">
+                                <img src="/image/nft.jpg" alt=""> 
+                            </a>
+                        </div>
+                        <div class="info">
+                            <p>Mono #010</p>
+                            <p>Precio: 0.5 ETH</p>
+                            <p>Termina en 5 horas</p>
+                            <button>Add to cart</button>
+                        </div>
+                    </div>
+                    <div class="card-2">
+                        <div class="contenedor-img">
+                            <a href="#">
+                                <img src="/image/nft.jpg" alt=""> 
+                            </a>
+                        </div>
+                        <div class="info">
+                            <p>Mono #010</p>
+                            <p>Precio: 0.5 ETH</p>
+                            <p>Termina en 5 horas</p>
+                            <button>Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <%- include('../views/partials/footer.ejs'); %>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>
+</html>

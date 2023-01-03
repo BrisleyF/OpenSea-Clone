@@ -1,0 +1,210 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main .title {
+    width: 50%;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+main .title h1 {
+    font-size: 2.5rem;
+}
+
+
+.card-1 {
+    width: 310px;
+    height: 310px;
+    border-radius: 12px;
+    margin: 0 0.5rem;
+}
+
+.card-1, .card-2 a {
+    text-decoration: none;
+}
+
+.card-1 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.card-1 div {
+    padding: 0 0 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    position: relative;
+    bottom: 4rem;
+}
+
+.card-1 p {
+    color: #fff;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+
+.stores {
+    /*
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;*/
+}
+
+/* --- --- CAROUSEL --- --- */
+.carousel__contenedor {
+	position: relative;
+    padding: 2rem 2rem;
+}
+
+.carousel__anterior, .carousel__siguiente, .carousel__anterior_2, .carousel__siguiente_2 {
+    position: absolute;
+	display: block;
+	width: 40px;
+	height: 40px;
+    font-size: 20px;
+	border: none;
+	top: calc(50% - 35px);
+	cursor: pointer;
+	line-height: 30px;
+	text-align: center;
+	background: #fff;
+    border-radius: 100%;
+	color: #000;
+	opacity: 90%;
+}
+
+.carousel__anterior:hover,
+.carousel__siguiente:hover, 
+.carousel__anterior_2, 
+.carousel__siguiente_2  {
+	opacity: 100%;
+}
+
+.carousel__anterior {
+	left: 25px;
+    z-index: 1;
+}
+
+.carousel__siguiente {
+	right: 25px;
+}
+
+.carousel__anterior_2 {
+	left: 15px;
+    z-index: 1;
+}
+
+.carousel__siguiente_2  {
+	right: 15px;
+}
+
+.carousel__lista, .carousel__lista_2 {
+	overflow: hidden;
+}
+
+.tabla-contenedor {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.tabla-contenedor .titulo {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    grid-column: 1/7;
+}
+
+.tabla-contenedor table {
+    width: 100%;
+    height: 80vh;
+}
+
+.tabla-contenedor .one {
+    grid-column: 1/7;
+}
+
+.tabla-contenedor .two {
+    grid-column: 7/13;
+}
+
+.tabla-contenedor table th, td {
+    text-align: left;
+    padding: 0 8px; 
+}
+
+.tabla-contenedor table th {
+    font-size: 12px;
+    color: #707a8b;
+}
+
+.tabla-contenedor table td img {
+    border-radius: 8px;
+}
+
+.tabla-contenedor table tr:nth-child(1):hover {
+    background-color: #fff;
+}
+
+.tabla-contenedor table tr:hover {
+    background-color: #fafafb;
+}
+
+.carousel__contenedor .carousel__lista_2 {
+    padding: 2rem 0;
+}
+
+.carousel__contenedor .carousel__lista_2 .card-2 {
+    width: 245px;
+    height: 255px;
+    border-radius: 12px;
+    margin: 0 0.5rem;
+    box-shadow: 0px 12px 5px -1px rgba(155,155,155,0.14);
+}
+
+.carousel__contenedor .carousel__lista_2 .card-2 img {
+    border-radius: 12px;
+}
+
+.carousel__contenedor .carousel__lista_2 .card-2 .info {
+    padding: 1rem;
+}
+
+.carousel__contenedor .carousel__lista_2 .card-2 .info p {
+    color: #000;
+    font-weight: 600;
+}
+
+.carousel__contenedor .titulo h3, p {
+    padding: 0.3rem 0.5rem;
+}
+
+@media only screen and (max-width: 800px) {
+    main .title h1 {
+        text-align: center;
+    }
+
+    .tabla-contenedor .two {
+        display: none;
+    }
+
+    .tabla-contenedor .one {
+        grid-column: 1/13;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+    main .title h1 {
+        font-size: 2rem;
+    }
+
+    .tabla-contenedor {
+        padding: 0 0.5rem;
+        font-size: 12px;
+    }
+}

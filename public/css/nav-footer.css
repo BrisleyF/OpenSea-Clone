@@ -1,0 +1,377 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Poppins, sans-serif;
+}
+
+.navbar {
+    padding: 1rem 1rem 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.navbar .one {
+    grid-column: 1 / 2;
+    display: flex;
+}
+
+.navbar .one div img {
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+.navbar .two {
+    grid-column: 2 / 4;
+}
+
+.navbar .two form {
+    width: 95%;
+    background-color: #fff;
+    padding: 0.5rem;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 12px;
+    color: rgb(185, 185, 185);
+}
+
+.navbar .two input {
+    width: 80%;
+    padding: 5px 5px;
+    border: none;
+    outline: none;
+}
+
+.navbar .two form button {
+    display: none;
+}
+
+.navbar .three {
+    grid-column: 4 / 6;
+}
+
+.navbar .three ul {
+    display: flex;
+}
+
+.navbar .three ul li {
+    list-style: none;
+    padding: 1rem 1.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.navbar .three ul li a {
+    text-decoration: none;
+    color: rgb(58, 58, 58);
+}
+
+.navbar .three ul .icon a i {
+    font-size: 25px;
+}
+
+.navbar .three ul li button {
+    border: none;
+}
+
+.navbar .three ul li button i {
+    font-size: 25px;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+    background-color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 3.5rem;
+    background-color: #fff;
+    min-width: 230px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.rodar {
+    right: 1.5rem;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: rgb(58, 58, 58);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    color: rgb(122, 121, 121);
+}
+
+.container-footer {
+    background-color: #1868b7;
+    padding: 0 7rem;
+    color: #fff;
+}
+
+.container-footer .section-one {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 2rem;
+}
+
+.container-footer .section-one .one {
+    padding: 40px 64px 0 0;
+}
+
+.container-footer .section-one .one h3 {
+    padding: 0.5rem 0;
+    font-size: 20px;
+}
+
+.container-footer .section-one .one p {
+    padding: 0.5rem 0;
+    font-size: 16px;
+}
+
+.container-footer .section-one .one form {
+    padding: 0.5rem 0;
+}
+
+.container-footer .section-one .one form input {
+    width: 65%;
+    padding: 0.5rem;
+    outline: none;
+    border-radius: 8px;
+    border: none;
+}
+
+.container-footer .section-one .one form button {
+    padding: 0.5rem 1rem;
+    background-color: #2181e2;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+.container-footer .section-one .two {
+    padding: 40px 0 0 64px ;
+}
+
+.container-footer .section-one .two h3 {
+    padding: 0.5rem 0;
+    font-size: 20px;
+}
+
+.container-footer .section-one .two button {
+    background-color: #2181e2;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin: 8px 12px 0 0;
+}
+
+
+.container-footer .section-two {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 2rem;
+}
+
+.container-footer .section-two .one {
+    grid-column: 1 / 2;
+    padding: 2.5rem 0;
+}
+
+
+.container-footer .section-two .one div {
+    padding: 1rem 0;
+}
+
+.container-footer .section-two .one a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+
+
+.container-footer .section-two .two {
+    grid-column: 2 / 4;
+    display: flex;
+    padding: 2.5rem 0 0 4.5rem;
+}
+
+
+.container-footer .section-two .two div {
+    margin-right: 3rem;
+}
+
+.container-footer .section-two .two h3 {
+    padding: 1rem 0;
+}
+
+.container-footer .section-two .two ul {
+    padding: 0.5rem 1rem 0.5rem 0;
+}
+
+
+.container-footer .section-two .two ul li {
+    list-style: none;
+    margin-top: 12px;
+}
+
+.container-footer .section-two .two ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.container-footer .section-three {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.container-footer .section-three .one {
+    padding: 1rem 0;
+}
+
+.container-footer .section-three .two {
+    padding: 1rem;
+}
+
+.container-footer .section-three .two a {
+    padding: 0 1rem;
+    text-decoration: none;
+    color: #fff;
+    
+}
+
+
+@media only screen and (max-width: 1150px) {
+    .navbar .three .none {
+        display: none;
+    }
+
+    .navbar .two {
+        grid-column: 2 / 5;
+    }
+
+    .navbar .three {
+        grid-column: 6 / 7;
+    }
+    
+    .navbar .three ul {
+        justify-content: end;
+    }
+
+    .container-footer .section-one {
+        grid-template-columns: repeat(1, 1fr);
+        text-align: center;
+    }
+
+    .container-footer .section-one .one {
+        padding: 2rem 0 0 0;
+    }
+
+    .container-footer .section-one .two {
+        padding: 2rem 0 0 0;
+    }
+
+    .container-footer .section-two {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-footer .section-two .one {
+        text-align: center;
+    }
+
+    .container-footer .section-two .two {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .container-footer .section-two .two div {
+        margin-right: 1rem;
+    }
+
+    .container-footer .section-two .two ul {
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+    .navbar .one div img {
+        width: 30px;
+    }
+
+    .navbar .three {
+        grid-column: 6 / 7;
+    }
+    
+    .navbar form {
+        display: none;
+    }
+
+    .navbar form input {
+        display: none;
+    }
+
+    .navbar .three .icon {
+        padding: 1rem 0.5rem;
+    }  
+
+    .navbar .three ul .icon i {
+        font-size: 15px;
+    }
+
+    .container-footer {
+        padding: 0 1rem;
+    }
+
+    .container-footer .section-two .two {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 0;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .container-footer .section-two .two div {
+        margin-right: 0;
+    }
+
+}

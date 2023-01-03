@@ -1,0 +1,312 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main .section-one .fondo {
+    width: 100%;
+    height: 50vh;
+}
+
+
+main .section-one .fondo img {
+    width: 100%;
+    height: 50vh;
+}
+
+main .section-one  .imagen {
+    width: 180px;
+    height: 180px;
+    background-color: #fff;
+    position: absolute;
+    top: 40%;
+    border-radius: 8px;
+    left: 2rem;
+}
+
+main .section-one .imagen img {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+}
+
+main .section-two {
+    padding: 4rem 2rem 0 2rem;
+}
+
+main .section-two .contenedor {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .section-two .contenedor h1 {
+    font-size: 1.9rem;
+}
+
+main .section-two .contenedor .iconos a {
+    text-decoration: none;
+    color: #000;
+}
+
+main .section-two .contenedor .iconos i {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+}
+
+main .section-three {
+    padding: 1rem 2rem;
+}
+
+main .section-three .info .datos, .descripcion {
+    padding: 0.5rem 0;
+}
+
+main .section-three .info .cifras {
+    display: flex;
+}
+
+main .section-three .info .cifras div {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem 0 0;
+}
+
+main .section-three .info .cifras div span {
+    color: gray;
+}
+
+main .section-three .info .nav {
+    border-bottom: 1px solid rgb(206, 206, 206);
+    padding: 2.5rem 0 0 0;
+}
+
+
+main .section-three .info .nav .lista {
+    display: flex;
+}
+
+main .section-three .info .nav .lista li {
+    list-style: none;
+    padding-bottom: 0.8rem;
+    padding-right: 2rem;
+}
+
+main .section-three .info .nav .lista li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #352840;
+}
+
+main .section-three .info .nav .lista li a {
+    text-decoration: solid 2px #000;
+}
+
+main .section-three .info .nav .lista li a:hover {
+    color: rgb(167, 164, 164);
+}
+
+main .section-four {
+    padding: 2rem;
+}
+
+main .section-four .one {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+main .section-four .contenedor {
+    grid-column: 1/3;
+}
+
+main .section-four form {
+    width: 95%;
+    background-color: #fff;
+    padding: 0.3rem;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 12px;
+    color: rgb(185, 185, 185);
+}
+
+main .section-four form input {
+    width: 80%;
+    padding: 5px 5px;
+    border: none;
+    outline: none;
+}
+
+main .section-four form button {
+    display: none;
+}
+
+main .section-four select {
+    width: 95%;
+    background-color: #fff;
+    padding: 0.5rem;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 12px;
+    color: #352840;
+    outline: none;
+    font-size: 1rem;
+}
+
+main .section-four select option {
+    font-size: 0.8rem;
+    padding: 1rem 0;
+}
+
+main .section-four button {
+    width: 95%;
+    background-color: #fff;
+    padding: 0.5rem;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+main .section-four button a {
+    text-decoration: none;
+    color: #3a7ab9;
+}
+
+main .section-four .two  {
+    padding: 2rem 0;
+}
+
+main .section-four .two .items {
+    display: flex;
+    justify-content: end;
+    margin-right: 1rem;
+}
+
+main .section-four .two .items p {
+    font-weight: 600;
+}
+
+main .section-four .two .coleccion {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    padding: 1rem 0;
+}
+
+main .section-four .two .coleccion .card-2 {
+    border-radius: 12px;
+    box-shadow: 0px 12px 5px -1px rgba(155,155,155,0.14);
+    height: 70vh;
+}
+
+main .section-four .two .coleccion .card-2 .contenedor-img {
+    height: 65%;
+}
+
+main .section-four .two .coleccion .card-2 .contenedor-img a {
+    text-decoration: none;
+}
+
+main .section-four .two .coleccion .card-2 img {
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+}
+
+main .section-four .two .coleccion .card-2 .info {
+    padding: 1rem;
+}
+
+main .section-four .two .coleccion .card-2 .info p {
+    color: #000;
+    padding-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+    main .section-four .two .coleccion {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media only screen and (max-width: 570px) {
+        main .section-one .fondo {
+            width: 100%;
+            height: 15vh;
+        }
+    
+        main .section-one .fondo img {
+            width: 100%;
+            height: 15vh;
+        }
+    
+        main .section-one .imagen {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            position: absolute;
+            top: 20%;
+            border-radius: 8px;
+            left: 2rem;
+        }
+    
+        main .section-one .imagen img {
+            width: 100%;
+            height: 100%;
+            padding: 0.5rem;
+        }
+
+        main .section-two .contenedor .iconos {
+            display: none;
+        }
+
+        main .section-three .info .cifras {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        main .section-three .info .cifras div {
+            padding: 1rem 1rem 0 0;
+        }
+
+        main .section-four {
+            padding: 1rem 1rem;
+        }
+
+        main .section-four .one {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        main .section-four .one div {
+            padding: 0.5rem 0;
+        }
+
+        main .section-four button {
+            font-size: 0.7rem;
+        }
+
+        main .section-four .two .coleccion {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        main .section-four .two .coleccion .card-2 .info button {
+            display: none;
+        }
+
+        main .section-four .two .coleccion .card-2 {
+            height: 40vh;
+        }
+
+        main .section-four .two .coleccion .card-2 .contenedor-img {
+            height: 50%;
+        } 
+
+        main .section-four .two .coleccion .card-2 .contenedor-img img {
+            height: 100%;
+        }
+
+        main .section-four .two .coleccion .card-2 .info p {
+            font-size: 0.8rem;
+        }
+}
