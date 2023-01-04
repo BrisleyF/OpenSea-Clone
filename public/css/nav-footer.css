@@ -75,6 +75,7 @@ html {
 
 .navbar .three ul li button {
     border: none;
+    background-color: #fff;
 }
 
 .navbar .three ul li button i {

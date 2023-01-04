@@ -221,6 +221,15 @@ main .section-four .two .coleccion .card-2 .info p {
     font-weight: 600;
 }
 
+main .section-four .two .coleccion .card-2 .info button {
+    background-color: #2e8eee;
+}
+
+main .section-four .two .coleccion .card-2 .info button a {
+    text-decoration: none;
+    color: #fff;
+}
+
 
 
 @media only screen and (max-width: 900px) {
