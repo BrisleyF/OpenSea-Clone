@@ -20,9 +20,34 @@ app.get('/', (req, res) => {
 	res.render('home');
 });
 
-app.get('/tiendas', (req, res) => {
-	res.render('tiendas');
+app.get('/tienda/:id', (req, res) => {
+	res.render('tienda');
 })
+
+app.get('/detalle/:id', (req, res) => {
+	res.render('detalle');
+})
+
+app.get('/register', (req, res) => {
+	res.render('register');
+})
+
+app.get('/login', (req, res) => {
+	res.render('login');
+})
+
+app.get('/logout', (req, res) => {
+	res.redirect('register');
+})
+
+app.get('/perfil', (req, res) => {
+	res.render('perfil');
+})
+
+app.get('/perfil/creado', (req, res) => {
+	res.render('perfil-creado');
+})
+
 
 const PUERTO = process.env.PORT || 3000;
 
