@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mono #010</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="/css/detalle.css">
+</head>
+<body>
+    
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <section class="section-one">
+            <div class="one">
+                <div class="contenedor-img">
+                    <img src="/image/nft.jpg" alt="">
+                </div>
+                <div class="contenedor-descripcion">
+                    <div class="contenedor-titulo">
+                        <i class="fa-solid fa-list"></i>
+                        <h3>Descripcón</h3>
+                    </div>
+                    <div class="descripcion">
+                        <p>Por <strong>userName</strong></p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quo, fugiat fuga eos nihil excepturi quaerat, atque debitis repellat modi sapiente iusto molestias consequuntur blanditiis dicta! Numquam eius iusto et!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two">
+                <div class="contenedor-header">
+                    <p> <span>Nombre de la coleccion</span></p>
+                    <h1>Mono #010</h1>
+                    <p>Propiedad de <span>fulanito</span></p>
+                </div>
+                <div class="contenedor-precio">
+                    <div class="contenedor-reloj">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>Fin de la venta 1 de febrero de 2023 a las 10:53 a. m. GMT-4 </p>
+                    </div>
+                    <div class="precio">
+                        <p>Precio actual</p>
+                        <div>
+                            <span><strong>0,1 ETH</strong></span>
+                            <span>$126,26</span>
+                        </div>
+                        <div class="botones">
+                            <button class="carrito"><a href="">Añadir al carrito</a></button>
+                            <button class="oferta"><a href="">Hacer oferta</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="anuncio">
+                    <div class="titulo">
+                        <i class="fa-solid fa-tag"></i>
+                        <h3>Anuncio</h3>
+                    </div>
+                    <div class="contenido">
+                        <table>
+                            <tr>
+                                <th>Precio</th>
+                                <th>Precio en USD</th>
+                                <th>Vencimiento</th>
+                                <th>de</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>0,1 ETH</td>
+                                <td>$126,26</td>
+                                <td>28 days</td>
+                                <td>fulanito</td>
+                                <td><button><a href="">Comprar</a></button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="ofertas">
+                    <div class="titulo">
+                        <i class="fa-solid fa-list"></i>
+                        <h3>Ofertas</h3>
+                    </div>
+                    <div class="contenido">
+                        <table>
+                            <tr>
+                                <th>Precio</th>
+                                <th>Precio en USD</th>
+                                <th>Diferencia de suelo</th>
+                                <th>Vencimiento</th>
+                                <th>de</th>
+                            </tr>
+                            <tr>
+                                <td>0,0042 WETH</td>
+                                <td>$5,25</td>
+                                <td>95% debajo</td>
+                                <td>3 days</td>
+                                <td>fulanito</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section-two">
+            <div class="actividad">
+                <div class="titulo">
+                    <i class="fa-solid fa-arrow-up-right-dots"></i>
+                    <h3>Actividad del artículo</h3>
+                </div>
+                <div class="contenido">
+                    <table>
+                        <tr>
+                            <th>Evento</th>
+                            <th>Precio</th>
+                            <th>De</th>
+                            <th>Para</th>
+                            <th>Fecha</th>
+                        </tr>
+                        <tr>
+                            <td>Transferir</td>
+                            <td>0,1 ETH</td>
+                            <td>fulanito 1</td>
+                            <td>fulanito 2</td>
+                            <td>Hace 3 días</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <%- include('../views/partials/footer.ejs'); %>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>
+</html>
