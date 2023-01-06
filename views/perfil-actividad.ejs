@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userName</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.7/glider.min.css">
+    <link rel="stylesheet" href="/css/perfil.css">
+</head>
+<body>
+    
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <section class="section-one">
+            <div class="fondo">
+                <img src="/image/fondo.png" alt="">
+            </div>
+            <div class="imagen">
+                <img src="/image/nft2.jpg" alt="">
+            </div>
+        </section>
+        <section class="section-two">
+            <div class="contenedor">
+                <div>
+                    <h1>Monitos</h1>
+                </div>
+                <div class="iconos">
+                    <a href="">
+                        <div><i class="fa-solid fa-ellipsis"></i></div>
+                    </a>
+                </div>
+            </div>
+            <div class="info">
+                <p><strong>UserID</strong></p>
+                <p>Se ha unido Enero 2023</p>
+            </div>
+        </section>
+        <section class="section-three">
+            <nav class="nav">
+                <ul class="lista">
+                    <li>
+                        <a href="/perfil/destacado">Destacado</a>
+                    </li>
+                    <li>
+                        <a href="/perfil/coleccionado">coleccionado</a>
+                    </li>
+                    <li>
+                        <a href="/perfil/creado">Creado</a>
+                    </li>
+                    <li><a href="/perfil/actividad">Actividad</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="section-four">
+            <div class="actividad">
+                <div class="contenido">
+                    <table>
+                        <tr>
+                            <th>Evento</th>
+                            <th>Artículo</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>De</th>
+                            <th>Para</th>
+                            <th>Fecha</th>
+                        </tr>
+                        <tr>
+                            <td>Transferir</td>
+                            <td><div>
+                                <img src="/image/nft.jpg" alt="" width="80">
+                                <span>Nombre</span>
+                            </div></td>
+                            <td>0,1 ETH</td>
+                            <td>1</td>
+                            <td>fulanito 1</td>
+                            <td>fulanito 2</td>
+                            <td>Hace 3 días</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>  
+    
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>    
