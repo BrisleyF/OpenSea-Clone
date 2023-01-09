@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f7f7;
+}
+
+main {
+    padding: 2rem 0;
+}
+
+main section {
+    background-color: #fff;
+    width: 60%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+main .contenedor .datos {
+    padding: 2rem 0;
+}
+
+main .contenedor .datos h1 {
+    margin-bottom: 2rem;
+}
+
+main .contenedor .datos label {
+    margin: 0.5rem 0;
+}
+
+main .contenedor .datos .container {
+    margin: 0.5rem 0;
+}
+
+main .contenedor .datos input, textarea, select {
+    width: 90%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+main .contenedor .datos input:hover, textarea:hover {
+    border: 1px solid #3d3d3d;
+} 
+
+main .contenedor .imagenes {
+    padding: 1rem 0 0 0;
+}
+
+main .contenedor .imagenes .container {
+    padding: 0.5rem 0;
+}
+
+main .contenedor .imagenes .container label {
+    padding: 1rem 0;
+    display: block;
+}
+
+main .contenedor .imagenes .container p {
+    color: grey;
+}
+
+main .contenedor .imagenes .container input {
+    padding-bottom: 1rem;
+}
+
+main .contenedor .imagenes .posicion {
+    position: relative;
+    background-color: #2e8eee;
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .contenedor .imagenes .posicion input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+main .contenedor .imagenes .circulo {
+    border-radius: 100%;
+}
+
+main .contenedor .imagenes .posicion:hover {
+    background-color: rgb(59, 59, 59);
+    opacity: 0.8;
+}
+
+main .contenedor .imagenes .posicion i {
+    color: #fff;
+}
+
+main section form .contenedor-button .btn {
+    border: none;
+    background-color: #2e8eee;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #fff;
+}
+
+
+@media only screen and (max-width: 570px) {
+    
+    main section {
+        width: 90%;
+    }
+}
