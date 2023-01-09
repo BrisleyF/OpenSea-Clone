@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+/* FOTO DE PERFIL Y BANNER */
+
 main .section-one .fondo {
     width: 100%;
     height: 50vh;
@@ -100,6 +102,8 @@ main .section-three .nav .lista li a:hover {
     color: rgb(167, 164, 164);
 }
 
+/* CREADO */
+
 /* --- --- CAROUSEL --- --- */
 .carousel__contenedor {
 	position: relative;
@@ -140,7 +144,6 @@ main .section-three .nav .lista li a:hover {
 .carousel__lista, .carousel__lista_3 {
 	overflow: hidden;
 }
-
 
 .card-4 {
     width: 430px;
@@ -183,6 +186,8 @@ main .section-three .nav .lista li a:hover {
     padding: 1rem;
     font-weight: 600;
 }
+
+/* PERFIL, DESTACADO, COLECCIONADO */
 
 main .section-five {
     padding: 2rem;
@@ -298,6 +303,8 @@ main .section-five .two .coleccion .card-3 .info button a {
     color: #fff;
 }
 
+/* ACTIVIDAD */
+
 main .section-four {
     padding-bottom: 2rem;
 }
@@ -352,4 +359,151 @@ main .contenido table td div img {
 
 main .contenido table td div span {
     margin-left: 0.5rem;
+}
+
+/* AJUSTES */
+
+.main-ajustes {
+    background-color: #f7f7f7;
+    padding: 2rem 0;
+}
+
+.main-ajustes section {
+    background-color: #fff;
+    width: 70%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.main-ajustes .contenedor {
+    display: flex;
+    height: 80vh;
+}
+
+.main-ajustes .contenedor .datos {
+    width: 70%;
+}
+
+.main-ajustes .contenedor .datos h1 {
+    margin-bottom: 2rem;
+}
+
+.main-ajustes .contenedor .datos label {
+    margin: 0.5rem 0;
+}
+
+.main-ajustes .contenedor .datos .container {
+    margin: 0.5rem 0;
+}
+
+.main-ajustes .contenedor .datos input, textarea {
+    width: 90%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.main-ajustes .contenedor .datos input:hover, textarea:hover {
+    border: 1px solid #3d3d3d;
+} 
+
+.main-ajustes .contenedor .imagenes .container {
+    padding: 0.5rem 0;
+}
+
+.main-ajustes .contenedor .imagenes .container label {
+    padding: 1rem 0;
+    display: block;
+}
+
+.main-ajustes .contenedor .imagenes .container p {
+    color: grey;
+}
+
+.main-ajustes .contenedor .imagenes .container input {
+    padding-bottom: 1rem;
+}
+
+.main-ajustes .contenedor .imagenes .posicion {
+    position: relative;
+    background-color: #2e8eee;
+    width: 70%;
+    height: 25%;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-ajustes .contenedor .imagenes .posicion input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.main-ajustes .contenedor .imagenes .circulo {
+    border-radius: 100%;
+}
+
+.main-ajustes .contenedor .imagenes .posicion:hover {
+    background-color: rgb(59, 59, 59);
+    opacity: 0.8;
+}
+
+.main-ajustes .contenedor .imagenes .posicion i {
+    color: #fff;
+}
+
+.main-ajustes section form .contenedor-button .btn {
+    border: none;
+    background-color: #2e8eee;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #fff;
+}
+
+
+@media only screen and (max-width: 570px) {
+    /* ajustes */
+    .main-ajustes {
+        padding: 2rem 0;
+    }
+
+    .main-ajustes section {
+        background-color: #fff;
+        width: 90%;
+        height: 100vh;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .main-ajustes .contenedor {
+        display: block;
+        height: 100%;
+    }
+
+    .main-ajustes .contenedor .datos {
+        width: 100%;
+    }
+
+    .main-ajustes .contenedor .imagenes {
+        height: 100%;
+    }
+
+    
+    .main-ajustes .contenedor .imagenes .posicion {
+        width: 50%;
+        height: 100%;
+    }
+
+    .main-ajustes section form .contenedor-button  {
+        padding: 2rem 0;
+    }
 }
