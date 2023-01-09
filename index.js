@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const initDb = require('./libs/db-connection');
-const splide = require('@splidejs/splide');
+const routes = require('./routes');
 
 const app = express();
 
@@ -15,38 +15,8 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rutas
-app.get('/', (req, res) => {
-	res.render('home');
-});
-
-app.get('/tienda/:id', (req, res) => {
-	res.render('tienda');
-})
-
-app.get('/detalle/:id', (req, res) => {
-	res.render('detalle');
-})
-
-app.get('/register', (req, res) => {
-	res.render('register');
-})
-
-app.get('/login', (req, res) => {
-	res.render('login');
-})
-
-app.get('/logout', (req, res) => {
-	res.redirect('register');
-})
-
-app.get('/perfil', (req, res) => {
-	res.render('perfil');
-})
-
-app.get('/perfil/creado', (req, res) => {
-	res.render('perfil-creado');
-})
+// Rutas de la App
+app.use('/', routes());
 
 
 const PUERTO = process.env.PORT || 3000;
