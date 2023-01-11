@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>userName</title>
+    <title><%= usuario.nombre %></title>
     <%- include('../views/partials/head.ejs'); %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.7/glider.min.css">
     <link rel="stylesheet" href="/css/perfil.css">
@@ -28,7 +28,7 @@
         <section class="section-two">
             <div class="contenedor">
                 <div>
-                    <h1>Monitos</h1>
+                    <h1><%= usuario.nombre %></h1>
                 </div>
                 <div class="iconos">
                     <a href="/perfil/ajustes">
@@ -37,8 +37,8 @@
                 </div>
             </div>
             <div class="info">
-                <p><strong>UserID</strong></p>
-                <p>Se ha unido Enero 2023</p>
+                <p><strong><%= usuario._id %></strong></p>
+                <p>Se ha unido <%= usuario.date %></p>
             </div>
         </section>
         <section class="section-three">
