@@ -22,7 +22,7 @@ main .title h1 {
     margin: 0 0.5rem;
 }
 
-.card-1, .card-2 a {
+.card-1 a, .card-2 a {
     text-decoration: none;
 }
 
