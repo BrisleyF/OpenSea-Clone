@@ -16,7 +16,7 @@
 
     <main>
         <section>
-            <form action="">
+            <form action="/coleccion/add" method="post" enctype="multipart/form-data">
                 <div class="contenedor">
                     <h1>Crear colección</h1>
                     <div class="imagenes">
@@ -26,7 +26,7 @@
                             <p>Tamaño máximo: 100 MB</p>
                         </div>
                         <div class="container posicion circulo">
-                            <input type="file">
+                            <input type="file" class="image-logo" name="imageLogoUrl">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </div>
                         <div class="container">
@@ -35,23 +35,23 @@
                             <p>Tamaño máximo: 100 MB</p>
                         </div>
                         <div class="container posicion">
-                            <input type="file">
+                            <input type="file" class="image-banner" name="imageBannerUrl">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </div>
                     </div>
                     <div class="datos">
                         <label for="">Nombre de la colección</label>
                         <div class="container">
-                            <input type="text" placeholder="Ejemplo: tesoros del mar">
+                            <input type="text" placeholder="Ejemplo: tesoros del mar" name="nombre">
                         </div>
                         <label for="">Descripción</label>
                         <div class="container">
-                            <textarea name="" id="" cols="30" rows="0"
+                            <textarea name="descripcion" id="" cols="30" rows="0"
                                 placeholder="¡Cuenta al mundo tu historia!"></textarea>
                         </div>
                         <label for="">Categoría</label>
                         <div class="container">
-                            <select name="" id="">
+                            <select name="categoria" id="">
                                 <option value="Arte">Arte</option>
                                 <option value="Coleccionables">Coleccionables</option>
                                 <option value="Nombre de dominio">Nombre de dominio</option>
@@ -65,11 +65,11 @@
                         </div>
                         <label for="">Direccion</label>
                         <div class="container">
-                            <input type="text" placeholder="Introduce la direccion de tu wallet">
+                            <input type="text" placeholder="Introduce la direccion de tu wallet" name="direccionWallet">
                         </div>
                         <label for="">Comision</label>
                         <div class="container">
-                            <input type="text" placeholder="Introduce el portentaje">
+                            <input type="text" placeholder="Introduce el portentaje" name="comision">
                         </div>
                     </div>
                 </div>
