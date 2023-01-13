@@ -1,5 +1,8 @@
+const Coleccion = require("../model/Coleccion");
 
 
 exports.inicio = async (req, res) => {
-    res.render('home');
+    const colecciones = await Coleccion.find({})
+
+    res.render('home', {colecciones});
 };

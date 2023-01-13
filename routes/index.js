@@ -27,6 +27,8 @@ module.exports = function() {
     router.get('/buscar', busquedaController.busqueda);
 
      // Colecciones 
+    router.post('/coleccion/add', coleccionesController.agregarColeccion);
+    
     router.get('/coleccion/:id', coleccionesController.mostrarColeccion);
 
     router.get('/detalle/:id', coleccionesController.detalleNFT);

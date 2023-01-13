@@ -1,22 +1,38 @@
+const User = require('../model/User');
 
 exports.mostrarPerfil = async (req, res) => {
-    res.render('perfil');
+    let userId = req.session.passport.user.id;
+    const usuario = await User.findById({_id: userId});
+
+    res.render('perfil', {usuario});
 }
 
 exports.perfilCreado = async (req, res) => {
-    res.render('perfil-creado');
+    let userId = req.session.passport.user.id;
+    const usuario = await User.findById({_id: userId});
+
+    res.render('perfil-creado', {usuario});
 }
 
 exports.perfilColeccionado = async (req, res) => {
-    res.render('perfil-coleccionado');
+    let userId = req.session.passport.user.id;
+    const usuario = await User.findById({_id: userId});
+
+    res.render('perfil-coleccionado', {usuario});
 }
 
 exports.perfilDestacado = async (req, res) => {
-    res.render('perfil-destacado');
+    let userId = req.session.passport.user.id;
+    const usuario = await User.findById({_id: userId});
+
+    res.render('perfil-destacado', {usuario});
 }
 
 exports.perfilActividad = async (req, res) => {
-    res.render('perfil-actividad');
+    let userId = req.session.passport.user.id;
+    const usuario = await User.findById({_id: userId});
+
+    res.render('perfil-actividad', {usuario});
 }
 
 exports.perfilAjustes = async (req, res) => {
