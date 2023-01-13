@@ -30,96 +30,19 @@
                 </button>
     
                 <div class="carousel__lista">
+                    
+                <% for(const coleccion of colecciones) { %>
                     <div class="card-1 carousel__elemento">
-                        <a href="/coleccion/:id">
-                            <img src="/image/nft.jpg" alt="">
+                        <a href="/coleccion/<%= coleccion._id %>">
+                            <img src="<%= coleccion.imageBannerUrl %>" alt="">
                             <div>
-                                <p>Nombre de la tienda</p>
+                                <p><%= coleccion.nombre %></p>
                                 <p>precio</p>
                             </div>
                         </a>
                     </div>
-                    <div class="card-1 carousel__elemento">
-                        <a href="#">
-                            <img src="/image/nft.jpg" alt="">
-                            <div>
-                                <p>Nombre de la tienda</p>
-                                <p>precio</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-1 carousel__elemento">
-                        <a href="#">
-                            <img src="/image/nft.jpg" alt="">
-                            <div>
-                                <p>Nombre de la tienda</p>
-                                <p>precio</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-1 carousel__elemento">
-                        <a href="#">
-                            <img src="/image/nft.jpg" alt="">
-                            <div>
-                                <p>Nombre de la tienda</p>
-                                <p>precio</p>
-                            </div>
-                        </a>
-                    </div>    
-                    <div class="card-1 carousel__elemento">
-                        <a href="#">
-                            <img src="/image/nft.jpg" alt="">
-                            <div>
-                                <p>Nombre de la tienda</p>
-                                <p>precio</p>
-                            </div>
-                        </a>
-                    </div>    
-                    <div class="card-1 carousel__elemento">
-                        <a href="#">
-                            <img src="/image/nft.jpg" alt="">
-                            <div>
-                                <p>Nombre de la tienda</p>
-                                <p>precio</p>
-                            </div>
-                        </a>
-                    </div>  
-                    <div class="card-1 carousel__elemento">
-                        <a href="#">
-                            <img src="/image/nft.jpg" alt="">
-                            <div>
-                                <p>Nombre de la tienda</p>
-                                <p>precio</p>
-                            </div>
-                        </a>
-                    </div> 
-                    <div class="card-1 carousel__elemento">
-                        <a href="#">
-                            <img src="/image/nft.jpg" alt="">
-                            <div>
-                                <p>Nombre de la tienda</p>
-                                <p>precio</p>
-                            </div>
-                        </a>
-                    </div> 
-                    <div class="card-1 carousel__elemento">
-                        <a href="#">
-                            <img src="/image/nft.jpg" alt="">
-                            <div>
-                                <p>Nombre de la tienda</p>
-                                <p>precio</p>
-                            </div>
-                        </a>
-                    </div> 
-                    <div class="card-1 carousel__elemento">
-                        <a href="#">
-                            <img src="/image/nft.jpg" alt="">
-                            <div>
-                                <p>Nombre de la tienda</p>
-                                <p>precio</p>
-                            </div>
-                        </a>
-                    </div> 
+                <% } %>
+                    
                 </div>
                 
                 <button aria-label="Siguiente" class="carousel__siguiente">

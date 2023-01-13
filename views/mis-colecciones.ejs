@@ -19,72 +19,23 @@
             <h1>Mis colecciones</h1>
         </div>
         <section>
+
+            <% for(const coleccion of colecciones) { %>
             <div class="card-4">
-                <a href="/coleccion/:id">
-                    <img src="/image/fondo.png" alt="">
+                <a href="/coleccion/<%= coleccion._id %>">
+                    <div class="image">
+                        <img src="<%= coleccion.imageBannerUrl %>" alt="">
+                    </div>
                     <div class="info">
                         <div>
-                            <img src="/image/nft2.jpg" alt="">
+                            <img src="<%= coleccion.imageLogoUrl %>" alt="">
                         </div>
-                        <h3>Nombre de la coleccion</h3>
+                        <h3><%= coleccion.nombre %></h3>
                     </div>
                 </a>
             </div>
-            <div class="card-4">
-                <a href="/coleccion/:id">
-                    <img src="/image/fondo.png" alt="">
-                    <div class="info">
-                        <div>
-                            <img src="/image/nft2.jpg" alt="">
-                        </div>
-                        <h3>Nombre de la coleccion</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="card-4">
-                <a href="/coleccion/:id">
-                    <img src="/image/fondo.png" alt="">
-                    <div class="info">
-                        <div>
-                            <img src="/image/nft2.jpg" alt="">
-                        </div>
-                        <h3>Nombre de la coleccion</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="card-4">
-                <a href="/coleccion/:id">
-                    <img src="/image/fondo.png" alt="">
-                    <div class="info">
-                        <div>
-                            <img src="/image/nft2.jpg" alt="">
-                        </div>
-                        <h3>Nombre de la coleccion</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="card-4">
-                <a href="/coleccion/:id">
-                    <img src="/image/fondo.png" alt="">
-                    <div class="info">
-                        <div>
-                            <img src="/image/nft2.jpg" alt="">
-                        </div>
-                        <h3>Nombre de la coleccion</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="card-4">
-                <a href="/coleccion/:id">
-                    <img src="/image/fondo.png" alt="">
-                    <div class="info">
-                        <div>
-                            <img src="/image/nft2.jpg" alt="">
-                        </div>
-                        <h3>Nombre de la coleccion</h3>
-                    </div>
-                </a>
-            </div>
+            <% } %>
+
         </section>
     </main>
 
