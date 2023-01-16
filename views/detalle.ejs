@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mono #010</title>
+    <title><%= articulo.nombre %></title>
     <%- include('../views/partials/head.ejs'); %>
     <link rel="stylesheet" href="/css/detalle.css">
 </head>
@@ -18,24 +18,24 @@
         <section class="section-one">
             <div class="one">
                 <div class="contenedor-img">
-                    <img src="/image/nft.jpg" alt="">
+                    <img src="<%= articulo.imageArticulo %>"" alt="">
                 </div>
                 <div class="contenedor-descripcion">
                     <div class="contenedor-titulo">
                         <i class="fa-solid fa-list"></i>
-                        <h3>Descripcón</h3>
+                        <h3>Descripción</h3>
                     </div>
                     <div class="descripcion">
-                        <p>Por <strong>userName</strong></p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quo, fugiat fuga eos nihil excepturi quaerat, atque debitis repellat modi sapiente iusto molestias consequuntur blanditiis dicta! Numquam eius iusto et!</p>
+                        <p>Por <strong><%= articulo.user.nombre %></strong></p>
+                        <p><%= articulo.descripcion %></p>
                     </div>
                 </div>
             </div>
 
             <div class="two">
                 <div class="contenedor-header">
-                    <p> <span>Nombre de la coleccion</span></p>
-                    <h1>Mono #010</h1>
+                    <p> <span><%= articulo.coleccion.nombre %></span></p>
+                    <h1><%= articulo.nombre %></h1>
                     <p>Propiedad de <span>fulanito</span></p>
                 </div>
                 <div class="contenedor-precio">
@@ -46,11 +46,11 @@
                     <div class="precio">
                         <p>Precio actual</p>
                         <div>
-                            <span><strong>0,1 ETH</strong></span>
-                            <span>$126,26</span>
+                            <span><strong><%= articulo.precio %> ETH</strong></span>
+                            <span>$</span>
                         </div>
                         <div class="botones">
-                            <button class="carrito"><a href="">Añadir al carrito</a></button>
+                            <button class="carrito"><a href="/carrito/agregar/<%= articulo._id %>">Añadir al carrito</a></button>
                             <button class="oferta"><a href="">Hacer oferta</a></button>
                         </div>
                     </div>

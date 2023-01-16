@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de compra</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="/css/carrito.css">
+</head>
+<body>
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <div class="contenedor-carrito">
+            <div class="contenedor-header">
+                <% if (carritos.length === 1) { %>
+                    <p><%= carritos.length  %> Artículo </p>
+                <%} else { %>
+                    <p><%= carritos.length  %> Artículos </p>
+                <% } %>
+                <button><a href="/delete">Borrar todo</a></button>
+            </div>
+            <div class="contenedor-articulos">
+                <% for(const carrito of carritos) { %>
+                <div class="imagen">
+                    <img src="<%= carrito.image  %>" alt="<%= carrito.nombre %>" width="50" height="50">
+                </div>
+                <div class="nombre">
+                    <h4><%= carrito.nombre %></h4>
+                </div>
+                <div class="usuario">
+                    <h4><%= carrito.creador %></h4>
+                </div>
+                <div class="precio">
+                    <h4><%= carrito.precio  %></h4>
+                </div>
+                <div class="eliminar">
+                    <a href="/delete/<%= carrito._id %>">
+                        <button class="btn-rojo">X</button>
+                    </a>
+                </div>
+                <% } %>
+            </div>
+            <div class="contenedor-info">
+                <h4><strong>Precio total:</strong></h4>
+                <div><p><%= preciototal %> ETH </p></div>
+            </div>
+            <div class="contenedor-pago">
+                <h4>Forma de pago:</h4>
+                <form action="">
+                    <input type="text" placeholder="Dirección de la wallet">
+                    <div class="cont-btn-continuar">
+                        <a href="/checkout">
+                            <button class="btn-continuar">Finalizar compra</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>
+</html>

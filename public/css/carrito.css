@@ -1,0 +1,89 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+main {
+    padding-top: 2rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.contenedor-carrito {
+    padding: 2rem 0;
+}
+
+main .contenedor-header {
+    border: 1px solid rgb(175, 174, 174);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2.2rem;
+}
+
+main .contenedor-header p, button {
+    padding: 0.5rem;
+}
+
+main .contenedor-header button {
+    background-color: #2e8eee;
+    border: none;
+}
+
+main .contenedor-header button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+main .contenedor-articulos {
+    border: 1px solid rgb(175, 174, 174);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+main .contenedor-articulos .btn-rojo {
+    background-color: rgb(238, 43, 43);
+    padding: 0.5rem;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+main .contenedor-carrito .contenedor-info, .contenedor-pago {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+main .contenedor-carrito .contenedor-info h4, .contenedor-pago h4 {
+    padding-bottom: 1rem;
+}
+
+main .contenedor-carrito .contenedor-pago input {
+    padding: 0.5rem;
+    border: none;
+    outline: 2px solid grey;
+}
+
+
+main .contenedor-carrito .contenedor-pago .cont-btn-continuar a {
+    text-decoration: none;
+}
+
+main .contenedor-carrito .contenedor-pago .cont-btn-continuar .btn-continuar {
+    background-color: #2e8eee;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
