@@ -16,22 +16,22 @@
 
     <main class="main-ajustes">
         <section>
-            <form action="">
+            <form action="/perfil/ajustes/:id" method="post" enctype="multipart/form-data">
                 <div class="contenedor">
                     <div class="datos">
                         <h1>Detalles del perfil</h1>
                         <label for="">Nombre de usuario</label>
                         <div class="container">
-                            <input type="text" placeholder="Introduce el nombre de usuario">
+                            <input type="text" placeholder="Introduce el nombre de usuario" name="nombre">
                         </div>
                         <label for="">Bio</label>
                         <div class="container">
-                            <textarea name="" id="" cols="30" rows="0"
+                            <textarea name="bio" id="" cols="30" rows="0"
                                 placeholder="¡Cuenta al mundo tu historia!"></textarea>
                         </div>
                         <label for="">Direción de correo electrónico</label>
                         <div class="container">
-                            <input type="text" placeholder="Introducir correo electrónico">
+                            <input type="text" placeholder="Introducir correo electrónico" name="email">
                         </div>
                     </div>
                     <div class="imagenes">
@@ -41,7 +41,7 @@
                             <p>Tamaño máximo: 100 MB</p>
                         </div>
                         <div class="container posicion circulo">
-                            <input type="file">
+                            <input type="file" name="imagePerfil">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </div>
                         <div class="container">
@@ -50,7 +50,7 @@
                             <p>Tamaño máximo: 100 MB</p>
                         </div>
                         <div class="container posicion">
-                            <input type="file">
+                            <input type="file" name="imageBanner">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </div>
                     </div>

@@ -19,14 +19,14 @@
             <ul>
                 <li><a href="/mis/colecciones">Mis colecciones</a></li>
                 <i class="fa-solid fa-chevron-right"></i>
-                <li><a href="/coleccion/:id">Nombre de la colección</a></li>
+                <li><a href="/coleccion/<%= coleccion._id %>"><%= coleccion.nombre %></a></li>
                 <i class="fa-solid fa-chevron-right"></i>
                 <li>Crear nuevo artículo</li>
             </ul>
         </section>
         <section class="section-two">
             <h1>Crear nuevo artículo</h1>
-            <form action="">
+            <form action="/agregar/articulo/<%= coleccion._id %>" method="post" enctype="multipart/form-data">
                 <div class="contenedor">
                     <div class="imagenes">
                         <div class="container">
@@ -35,23 +35,23 @@
                             <p>Tamaño máximo: 100 MB</p>
                         </div>
                         <div class="container posicion">
-                            <input type="file">
+                            <input type="file" name="imageArticulo">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </div>
                     </div>
                     <div class="datos">
                         <label for="">Nombre</label>
                         <div class="container">
-                            <input type="text" placeholder="Nombre del artículo">
+                            <input type="text" placeholder="Nombre del artículo" name="nombre">
                         </div>
                         <label for="">Descripción</label>
                         <div class="container">
-                            <textarea name="" id="" cols="30" rows="0"
+                            <textarea name="descripcion" id="" cols="30" rows="0"
                                 placeholder="Proporciona una sescripción detallada del artículo."></textarea>
                         </div>
                         <label for="">Precio del artículo</label>
                         <div class="container">
-                            <input type="text" placeholder="Introducir el precio">
+                            <input type="text" placeholder="Introducir el precio" name="precio">
                         </div>
                     </div>
                 </div>

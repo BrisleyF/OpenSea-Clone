@@ -19,10 +19,10 @@
     <main>
         <section class="section-one">
             <div class="fondo">
-                <img src="/image/fondo.png" alt="">
+                <img src="<%= usuario.imageBanner %>" alt="">
             </div>
             <div class="imagen">
-                <img src="/image/nft2.jpg" alt="">
+                <img src="<%= usuario.imagePerfil %>" alt="">
             </div>
         </section>
         <section class="section-two">
@@ -31,7 +31,7 @@
                     <h1><%= usuario.nombre %></h1>
                 </div>
                 <div class="iconos">
-                    <a href="/perfil/ajustes">
+                    <a href="/perfil/ajustes/<%= usuario._id %>">
                         <div><i class="fa-solid fa-ellipsis"></i></div>
                     </a>
                 </div>
