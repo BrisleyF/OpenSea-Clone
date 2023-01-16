@@ -10,7 +10,8 @@ const coleccionSchema = new mongoose.Schema({
     comision: { type: String, required: true },
     public_id_logo: { type: String},
     public_id_banner: { type: String},
-    user: { type: mongoose.Schema.ObjectId, ref: 'User'}
+    user: { type: mongoose.Schema.ObjectId, ref: 'User'},
+    date: {type: Date}
 });
 
 const Coleccion = mongoose.model('Coleccion', coleccionSchema); 
