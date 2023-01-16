@@ -58,7 +58,6 @@ exports.agregarColeccion = async (req, res) => {
 
 exports.mostrarColeccion = async (req, res) => {
     let id = req.params.id;
-    console.log(id);
 
     const passport = req.session.passport;
 
@@ -71,7 +70,6 @@ exports.mostrarColeccion = async (req, res) => {
         const coleccion = await Coleccion.findOne({_id: id}).populate('user');
 
         const articulos = await Articulo.find({coleccion: id});
-        console.log(articulos);
     
         res.render('coleccion', {coleccion, userId, articulos});
     }
@@ -79,7 +77,11 @@ exports.mostrarColeccion = async (req, res) => {
 }
 
 exports.detalleNFT = async (req, res) => {
-    res.render('detalle');
+    const id = req.params.id;
+
+    const articulo = await Articulo.findOne({_id: id}).populate('user').populate('coleccion');
+
+    res.render('detalle', {articulo});
 }
 
 exports.mostarMisColecciones = async (req, res) => {
@@ -126,8 +128,4 @@ exports.agregarArticulo = async (req, res) => {
     }   
 
     res.redirect(`/coleccion/${id}`);
-}
-
-exports.agregarAlCarrito = async (req, res) => {
-    res.send('carrito de compras');
 }

@@ -5,6 +5,8 @@ const registerLoginController = require('../controllers/registerLoginControler')
 const busquedaController = require('../controllers/busquedaController');
 const coleccionesController = require('../controllers/coleccionController');
 const perfilController = require('../controllers/perfilController');
+const carritoController = require('../controllers/carritoController');
+const walletContoller = require('../controllers/walletController');
 
 module.exports = function() {
 
@@ -38,7 +40,15 @@ module.exports = function() {
 
     router.get('/agregar/articulo/:id', coleccionesController.mostrarFormularioArticulo);
 
-    router.get('/carrito/agregar/:id', coleccionesController.agregarAlCarrito);
+    // Carrito 
+    router.get('/carrito', carritoController.mostarCarrito)
+
+    router.get('/carrito/agregar/:id', carritoController.agregarAlCarrito);
+
+    router.get('/delete/:id', carritoController.eliminarArticulo)
+
+    
+    router.get('/delete', carritoController.eliminarTodo)
 
     // Perfil
     router.get('/perfil', perfilController.mostrarPerfil);
@@ -54,6 +64,9 @@ module.exports = function() {
     router.get('/perfil/ajustes/:id', perfilController.mostrarAjustes);
 
     router.post('/perfil/ajustes/:id', perfilController.enviarAjustes);
+
+    // Wallet 
+    router.get('/wallet/:id', walletContoller.mostrarWallet)
 
 
     return router;
