@@ -5,7 +5,6 @@ const registerLoginController = require('../controllers/registerLoginControler')
 const busquedaController = require('../controllers/busquedaController');
 const coleccionesController = require('../controllers/coleccionController');
 const perfilController = require('../controllers/perfilController');
-const crearColeccionesController = require('../controllers/crearColeccionesController');
 
 module.exports = function() {
 
@@ -33,6 +32,12 @@ module.exports = function() {
 
     router.get('/detalle/:id', coleccionesController.detalleNFT);
 
+    router.get('/mis/colecciones', coleccionesController.mostarMisColecciones);
+
+    router.post('/agregar/articulo/:id', coleccionesController.agregarArticulo);
+
+    router.get('/agregar/articulo/:id', coleccionesController.mostrarFormularioArticulo);
+
     router.get('/carrito/agregar/:id', coleccionesController.agregarAlCarrito);
 
     // Perfil
@@ -46,14 +51,10 @@ module.exports = function() {
 
     router.get('/perfil/actividad', perfilController.perfilActividad);
 
-    router.get('/perfil/ajustes', perfilController.perfilAjustes);
+    router.get('/perfil/ajustes/:id', perfilController.mostrarAjustes);
 
-    // Crear colecciones 
-    router.get('/crear/colecciones', crearColeccionesController.crearColeccion);
+    router.post('/perfil/ajustes/:id', perfilController.enviarAjustes);
 
-    router.get('/mis/colecciones', crearColeccionesController.mostarMisColecciones);
-
-    router.get('/agregar/articulo', crearColeccionesController.agregarArticulo);
 
     return router;
 }

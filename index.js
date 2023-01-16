@@ -57,8 +57,12 @@ const storage = multer.diskStorage({
     }
 }) 
 app.use(multer({storage}).fields([
-	{ name: 'imageLogoUrl', maxCount: 1 }, { name: 'imageBannerUrl', maxCount: 1 }
+	{ name: 'imageLogoUrl', maxCount: 1 }, { name: 'imageBannerUrl', maxCount: 1 },
+	{ name: 'imagePerfil', maxCount: 1 }, { name: 'imageBanner', maxCount: 1 },
+	{ name: 'imageArticulo', maxCount: 1 }
 ]));
+
+
 
 // Rutas de la App
 app.use('/', routes());

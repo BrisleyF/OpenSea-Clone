@@ -1,4 +1,17 @@
 const User = require('../model/User');
+const cloudinary  = require('cloudinary');
+const fs = require('fs-extra');
+
+if (process.env.NODE_ENV !== 'production') {
+	const dotenv = require('dotenv').config();
+}
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
 
 exports.mostrarPerfil = async (req, res) => {
     let userId = req.session.passport.user.id;
@@ -35,6 +48,48 @@ exports.perfilActividad = async (req, res) => {
     res.render('perfil-actividad', {usuario});
 }
 
-exports.perfilAjustes = async (req, res) => {
-    res.render('perfil-ajustes');
+exports.mostrarAjustes = async (req, res) => {
+    const id = req.params.id;
+
+    const usuario = User.findOne({_id: id})
+
+    res.render('perfil-ajustes', {usuario});
 }
+
+
+exports.enviarAjustes = async (req, res) => {
+
+    let userId = req.session.passport.user.id;
+
+    const { nombre, bio, email } = req.body;
+
+    const result1 = await cloudinary.v2.uploader.upload(req.files['imagePerfil'][0].path);
+    const result2 = await cloudinary.v2.uploader.upload(req.files['imageBanner'][0].path);
+
+    const passport = req.session.passport;
+
+    if (!passport) {
+        res.redirect('/login')
+    } else {
+        const userId = req.session.passport.user.id;
+
+
+        const usuario = await User.updateOne(
+            {_id: userId}, 
+            {
+                $set: {
+                    nombre,
+                    bio,
+                    email,
+                    imagePerfil: result1.url,
+                    imageBanner: result2.url
+                }
+            }); 
+
+        await fs.unlink(req.files['imagePerfil'][0].path)
+        await fs.unlink(req.files['imageBanner'][0].path)
+    }
+
+    res.redirect('/perfil');
+}
+
