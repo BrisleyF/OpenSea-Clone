@@ -1,9 +1,8 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
 
 main {
     padding-top: 2rem;
@@ -11,7 +10,7 @@ main {
     margin: 0 auto;
 }
 
-.contenedor-carrito {
+main .contenedor-carrito {
     padding: 2rem 0;
 }
 

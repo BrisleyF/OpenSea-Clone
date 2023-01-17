@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="/css//wallet.css">
+</head>
+<body>
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <div class="contenedor-header">
+            <div><h3>Mi wallet</h3></div>
+            <div><p><%= usuario._id %></p></div>
+        </div>
+        <div class="contenedor-balance">
+            <div>
+                <p>Saldo total</p>
+                <h3><%= usuario.wallet.balance %> $</h3>
+            </div>
+            <div>
+                <form action="/depositar" method="post">
+                    <label for="">Añadir fondos</label>
+                    <input type="text" placeholder="Introducir el monto" name="monto">
+                    <button>Depositar</button>
+                </form>
+            </div>
+        </div>
+        <div class="titulo"><h3>Mis propiedades</h3></div>
+        <div class="contenedor-articulos">
+            
+            <div class="imagen">
+                <img src="<%=   %>" alt="<%=  %>" width="50" height="50">
+            </div>
+            <div class="nombre">
+                <h4><%=  %></h4>
+            </div>
+            <div class="usuario">
+                <h4><%=  %></h4>
+            </div>
+            <div class="precio">
+                <h4><%=  %></h4>
+            </div>
+            
+        </div>
+    </main>
+
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -7,11 +7,12 @@ const coleccionesController = require('../controllers/coleccionController');
 const perfilController = require('../controllers/perfilController');
 const carritoController = require('../controllers/carritoController');
 const walletContoller = require('../controllers/walletController');
+const verificarUser = require('../middleware/verificarUser');
 
 module.exports = function() {
 
      // Inicio
-    router.get('/', inicioController.inicio);
+    router.get('/', verificarUser, inicioController.inicio);
 
      // Login y registro
     router.post('/register', registerLoginController.registrar);
@@ -29,6 +30,8 @@ module.exports = function() {
 
      // Colecciones 
     router.post('/coleccion/add', coleccionesController.agregarColeccion);
+
+    router.get('/crear/colecciones', coleccionesController.formularioCrearColeccion)
     
     router.get('/coleccion/:id', coleccionesController.mostrarColeccion);
 
@@ -46,7 +49,6 @@ module.exports = function() {
     router.get('/carrito/agregar/:id', carritoController.agregarAlCarrito);
 
     router.get('/delete/:id', carritoController.eliminarArticulo)
-
     
     router.get('/delete', carritoController.eliminarTodo)
 
@@ -66,7 +68,9 @@ module.exports = function() {
     router.post('/perfil/ajustes/:id', perfilController.enviarAjustes);
 
     // Wallet 
-    router.get('/wallet/:id', walletContoller.mostrarWallet)
+    router.get('/wallet', walletContoller.mostrarWallet);
+
+    router.post('/depositar', walletContoller.depositarSaldo);
 
 
     return router;
