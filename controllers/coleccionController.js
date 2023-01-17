@@ -24,62 +24,56 @@ exports.agregarColeccion = async (req, res) => {
     const result1 = await cloudinary.v2.uploader.upload(req.files['imageLogoUrl'][0].path);
     const result2 = await cloudinary.v2.uploader.upload(req.files['imageBannerUrl'][0].path);
 
-    const passport = req.session.passport;
 
-    if (!passport) {
-        res.redirect('/login')
-    } else {
-        const userId = req.session.passport.user.id;
+    const userId = req.session.passport.user.id;
 
-        const coleccion = new Coleccion({
-            imageLogoUrl: result1.url,
-            imageBannerUrl: result2.url,
-            nombre,
-            descripcion,
-            categoria,
-            direccionWallet,
-            comision,
-            public_id_logo: result1.public_id,
-            public_id_banner: result2.public_id,
-            date: Date(),
-            user: userId
+    const coleccion = new Coleccion({
+        imageLogoUrl: result1.url,
+        imageBannerUrl: result2.url,
+        nombre,
+        descripcion,
+        categoria,
+        direccionWallet,
+        comision,
+        public_id_logo: result1.public_id,
+        public_id_banner: result2.public_id,
+        date: Date(),
+        user: userId
 
-        })
+    })
 
-        await coleccion.save();
+    await coleccion.save();
 
-        await fs.unlink(req.files['imageLogoUrl'][0].path)
-        await fs.unlink(req.files['imageBannerUrl'][0].path)
+    await fs.unlink(req.files['imageLogoUrl'][0].path)
+    await fs.unlink(req.files['imageBannerUrl'][0].path)
 
-        res.redirect('/mis/colecciones');
-    }
+    res.redirect('/mis/colecciones');
+}
 
+exports.formularioCrearColeccion = async (req, res) => {
+
+    res.render('crear-colecciones');
 }
 
 exports.mostrarColeccion = async (req, res) => {
     let id = req.params.id;
 
-    const passport = req.session.passport;
 
-    if (!passport) {
-        res.redirect('/login');
-    } else { 
+    const userId = req.session.passport.user.id;
 
-        const userId = req.session.passport.user.id;
-        
-        const coleccion = await Coleccion.findOne({_id: id}).populate('user');
+    const coleccion = await Coleccion.findOne({ _id: id }).populate('user');
 
-        const articulos = await Articulo.find({coleccion: id});
+    const articulos = await Articulo.find({ coleccion: id });
+
+    res.render('coleccion', { coleccion, userId, articulos });
     
-        res.render('coleccion', {coleccion, userId, articulos});
-    }
 
 }
 
 exports.detalleNFT = async (req, res) => {
     const id = req.params.id;
 
-    const articulo = await Articulo.findOne({_id: id}).populate('user').populate('coleccion');
+    const articulo = await Articulo.findOne({_id: id}).populate('creador').populate('coleccion');
 
     res.render('detalle', {articulo});
 }
@@ -101,31 +95,24 @@ exports.mostrarFormularioArticulo = async (req, res) => {
 
 exports.agregarArticulo = async (req, res) => {
     const id = req.params.id;
-    
-    const { nombre, descripcion, precio} = req.body;
+
+    const { nombre, descripcion, precio } = req.body;
 
     const result = await cloudinary.v2.uploader.upload(req.files['imageArticulo'][0].path);
 
-    const passport = req.session.passport;
+    const articulo = new Articulo({
+        nombre,
+        descripcion,
+        precio,
+        imageArticulo: result.url,
+        creador: userId,
+        coleccion: id
+    })
 
-    if (!passport) {
-        res.redirect('/login')
-    } else {
-        const userId = req.session.passport.user.id;
+    await articulo.save();
 
-        const articulo = new Articulo ({
-            nombre,
-            descripcion,
-            precio,
-            imageArticulo: result.url,
-            user: userId,
-            coleccion: id
-        })
-
-        await articulo.save();
-
-        await fs.unlink(req.files['imageArticulo'][0].path)
-    }   
+    await fs.unlink(req.files['imageArticulo'][0].path)
+    
 
     res.redirect(`/coleccion/${id}`);
 }

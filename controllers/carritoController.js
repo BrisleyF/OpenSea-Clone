@@ -3,7 +3,7 @@ const Carrito = require('../model/Carrito');
 const Orden = require('../model/Orden');
 
 exports.mostarCarrito = async (req, res) => {
-    
+
     const carritos =  await Carrito.find({});
 
     let preciototal = 0
@@ -19,13 +19,13 @@ exports.mostarCarrito = async (req, res) => {
 exports.agregarAlCarrito = async (req, res) => {
     const id = req.params.id;
 
-    let articulo = await Articulo.findOne({ _id: id }).populate('user').populate('coleccion'); 
+    let articulo = await Articulo.findOne({ _id: id }).populate('creador').populate('coleccion'); 
 
     const carrito = new Carrito ({
         image: articulo.imageArticulo,
         nombre: articulo.nombre,
         idArticulo: articulo._id,
-        creador: articulo.user.nombre,
+        creador: articulo.creador.nombre,
         precio: articulo.precio,
         ganancia: articulo.coleccion.comision
     });
@@ -45,7 +45,7 @@ exports.eliminarArticulo = async (req, res) => {
     res.redirect('/carrito');
 }
 
-exports.eliminarTodo= async (req, res) => {
+exports.eliminarTodo = async (req, res) => {
 
     await Carrito.deleteMany();
 

@@ -1,6 +1,7 @@
 const User = require('../model/User');
 const cloudinary  = require('cloudinary');
 const fs = require('fs-extra');
+const Articulo = require('../model/Articulo');
 
 if (process.env.NODE_ENV !== 'production') {
 	const dotenv = require('dotenv').config();
@@ -17,7 +18,9 @@ exports.mostrarPerfil = async (req, res) => {
     let userId = req.session.passport.user.id;
     const usuario = await User.findById({_id: userId});
 
-    res.render('perfil', {usuario});
+    const articulos = await Articulo.find({creador: userId});
+
+    res.render('perfil', {usuario, articulos});
 }
 
 exports.perfilCreado = async (req, res) => {
@@ -58,37 +61,28 @@ exports.mostrarAjustes = async (req, res) => {
 
 
 exports.enviarAjustes = async (req, res) => {
-
-    let userId = req.session.passport.user.id;
+    const userId = req.session.passport.user.id;
 
     const { nombre, bio, email } = req.body;
 
     const result1 = await cloudinary.v2.uploader.upload(req.files['imagePerfil'][0].path);
     const result2 = await cloudinary.v2.uploader.upload(req.files['imageBanner'][0].path);
 
-    const passport = req.session.passport;
+    const usuario = await User.updateOne(
+        { _id: userId },
+        {
+            $set: {
+                nombre,
+                bio,
+                email,
+                imagePerfil: result1.url,
+                imageBanner: result2.url
+            }
+        });
 
-    if (!passport) {
-        res.redirect('/login')
-    } else {
-        const userId = req.session.passport.user.id;
+    await fs.unlink(req.files['imagePerfil'][0].path)
+    await fs.unlink(req.files['imageBanner'][0].path)
 
-
-        const usuario = await User.updateOne(
-            {_id: userId}, 
-            {
-                $set: {
-                    nombre,
-                    bio,
-                    email,
-                    imagePerfil: result1.url,
-                    imageBanner: result2.url
-                }
-            }); 
-
-        await fs.unlink(req.files['imagePerfil'][0].path)
-        await fs.unlink(req.files['imageBanner'][0].path)
-    }
 
     res.redirect('/perfil');
 }

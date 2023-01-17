@@ -1,21 +1,35 @@
+const Carrito = require('../model/Carrito');
 const User = require('../model/User');
 
 exports.registrar = async (req, res) => {
     const {nombre, email, clave} = req.body;
 	console.log('req.body', req.body);
 
-	const usuario = new User({nombre, email, clave, date: Date()});
+	const usuario = new User({
+		nombre, 
+		email, 
+		clave, 
+		date: Date(),
+		wallet: {
+			balance: 0,
+			articulos: []
+		}
+	});
 
 	usuario.save(err => {
 		if (err) {
 			res.status(500).send('ERROR AL REGISTRAR EL USUARIO');
 		} else {
+
 			res.redirect('/login');
 		}
 	});
+
 };
 
 exports.registro = async (req, res) => {
+	
+
     res.render('register');
 };
 
@@ -41,14 +55,14 @@ exports.autenticar = async (req, res) => {
 						}
 						return res.redirect('/');
 					})
-                    
 				}
 			});
 		}
 	});
-}
+};
 
 exports.login = async (req, res) => {
+
     res.render('login')
 };
 
@@ -57,4 +71,5 @@ exports.logout = async (req, res) => {
 		if (err) { return next(err); }
 		res.redirect('/login')
 	});
+	await Carrito.deleteMany();
 };
