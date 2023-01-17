@@ -5,7 +5,7 @@ const articuloSchema = new mongoose.Schema({
     nombre: { type: String, required: true },
     descripcion: { type: String, required: true },
     precio: { type: Number, required: true},
-    user: { type: mongoose.Schema.ObjectId, ref: 'User'},
+    creador: { type: mongoose.Schema.ObjectId, ref: 'User'},
     coleccion: { type: mongoose.Schema.ObjectId, ref: 'Coleccion'},
     date: {type: Date}
 });
