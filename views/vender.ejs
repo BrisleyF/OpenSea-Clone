@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anunciar artículo</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="/css/vender.css">
+</head>
+<body>
+    
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <section>
+            <div class="contenedor-header">
+                <a href="/coleccion/<%= articulo.coleccion._id %>"><i class="fa-solid fa-chevron-left"></i></a>
+                <h2>Anuncio para venta</h2>
+            </div>
+            <div>
+                <form action="">
+                    <h4>Elige un tipo de venta</h4>
+                    <label for="" class="flex">
+                        <div>
+                            <p><strong>Precio fijo</strong></p>
+                            <p>El artículo se anuncia al precio que has establecido.</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="tipo">
+                        </div>
+                    </label>
+                    <label for="" class="flex">
+                        <div>
+                            <p><strong>Subasta con límite de tiempo</strong></p>
+                            <p>El artículo se anuncia para subasta.</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="tipo">
+                        </div>
+                    </label>
+                    <h4>Elije un método para la subasta</h4>
+                    <label for="" class="flex">
+                        <div>
+                            <p><strong>Vender al mejor postor</strong></p>
+                            <p>La puja más alta gana al final.</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="metodo">
+                        </div>
+                    </label>
+                    <label for="" class="flex">
+                        <div>
+                            <p><strong>Vender con precio decreciente</strong></p>
+                            <p>El precio va decreciendo hasta que alguien compra el artículo.</p>
+                        </div>
+                        <div>
+                            <input type="radio" name="metodo">
+                        </div>
+                    </label>
+                    <h4>Establece el precio</h4>
+                    <div class="contenedor-precio">
+                        <label for="">Precio de salida</label>
+                        <input type="text" name="precioSalida" placeholder="Precio">
+                        <label for="">Precio final</label>
+                        <input type="text" name="precioFinal" placeholder="Precio">
+                    </div>
+                    <h4>Establece la duración</h4>
+                    <select name="duracion" id="">
+                        <option value="1">1 día</option>
+                        <option value="3">3 días</option>
+                        <option value="7">7 días</option>
+                        <option value="30">1 mes</option>
+                    </select>
+                    <h4>Resumen</h4>
+                    <div class="contenedor">
+                        <div>Tasa de servicio</div>
+                        <div>2.5%</div>
+                    </div>
+                    <div class="contenedor">
+                        <div>Ganancias del creador</div>
+                        <div>comision del creador</div>
+                    </div>
+                    <button>Anunciar</button>
+                </form>
+            </div>
+        </section>
+        <section class="two">
+            <div class="card-3">
+                <div class="contenedor-img">
+                    <a href="#">
+                        <img src="<%= articulo.imageArticulo%>" alt=""> 
+                    </a>
+                </div>
+                <div class="info">
+                    <p><%= articulo.nombre %></p>
+                    <p><%= articulo.coleccion.nombre %></p>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>
+</html>
