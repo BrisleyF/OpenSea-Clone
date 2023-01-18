@@ -49,7 +49,11 @@
                             <span><strong><%= articulo.precio %> $</strong></span>
                         </div>
                         <div class="botones">
-                            <button class="carrito"><a href="/carrito/agregar/<%= articulo._id %>">Añadir al carrito</a></button>
+                            <% if(articulo.creador = userId) { %>
+                                <button class="venta"><a href="/vender/<%= articulo._id %>">Vender</a></button>
+                            <%} else { %>
+                                <button class="carrito"><a href="/carrito/agregar/<%= articulo._id %>">Add to cart</a></button>
+                            <% } %>
                             <button class="oferta"><a href="">Hacer oferta</a></button>
                         </div>
                     </div>

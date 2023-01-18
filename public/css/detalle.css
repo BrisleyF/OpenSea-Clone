@@ -123,6 +123,14 @@ main .section-one .two .contenedor-precio .precio .botones .carrito {
     width: 48%;
 }
 
+main .section-one .two .contenedor-precio .precio .botones .venta {
+    background-color: #2e8eee;;
+    padding: 1rem;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 8px;
+    width: 48%;
+} 
+
 main .section-one .two .contenedor-precio .precio .botones .oferta {
     background-color: #fff;
     padding: 1rem;
@@ -132,6 +140,13 @@ main .section-one .two .contenedor-precio .precio .botones .oferta {
 } 
 
 main .section-one .two .contenedor-precio .precio .botones .carrito a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+main .section-one .two .contenedor-precio .precio .botones .venta a {
     text-decoration: none;
     color: #fff;
     font-size: 1rem;

@@ -7,6 +7,8 @@ const articuloSchema = new mongoose.Schema({
     precio: { type: Number, required: true},
     creador: { type: mongoose.Schema.ObjectId, ref: 'User'},
     coleccion: { type: mongoose.Schema.ObjectId, ref: 'Coleccion'},
+    propietario: { type: String },
+    propietarioId: { type: String},
     date: {type: Date}
 });
 

@@ -20,7 +20,7 @@ exports.mostrarPerfil = async (req, res) => {
 
     const articulos = await Articulo.find({creador: userId});
 
-    res.render('perfil', {usuario, articulos});
+    res.render('perfil', {usuario, articulos, userId});
 }
 
 exports.perfilCreado = async (req, res) => {

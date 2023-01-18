@@ -58,7 +58,6 @@ exports.formularioCrearColeccion = async (req, res) => {
 exports.mostrarColeccion = async (req, res) => {
     let id = req.params.id;
 
-
     const userId = req.session.passport.user.id;
 
     const coleccion = await Coleccion.findOne({ _id: id }).populate('user');
@@ -72,15 +71,18 @@ exports.mostrarColeccion = async (req, res) => {
 
 exports.detalleNFT = async (req, res) => {
     const id = req.params.id;
+    
+    const userId = req.session.passport.user.id;
 
     const articulo = await Articulo.findOne({_id: id}).populate('creador').populate('coleccion');
 
-    res.render('detalle', {articulo});
+    res.render('detalle', {articulo, userId});
 }
 
 exports.mostarMisColecciones = async (req, res) => {
+    const userId = req.session.passport.user.id;
 
-    const colecciones = await Coleccion.find({});
+    const colecciones = await Coleccion.find({user: userId});
 
     res.render('mis-colecciones', {colecciones});
 }

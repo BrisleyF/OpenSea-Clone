@@ -50,12 +50,10 @@
             </div>
             <div class="contenedor-pago">
                 <h4>Forma de pago:</h4>
-                <form action="">
-                    <input type="text" placeholder="Dirección de la wallet">
+                <form action="/comprar" method="post">
+                    <input type="text" placeholder="Dirección de la wallet" name="wallet">
                     <div class="cont-btn-continuar">
-                        <a href="/checkout">
-                            <button class="btn-continuar">Finalizar compra</button>
-                        </a>
+                        <button class="btn-continuar">Finalizar compra</button>
                     </div>
                 </form>
             </div>
