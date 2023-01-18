@@ -290,18 +290,15 @@ main .section-five .two .coleccion .card-3 .info p {
     font-weight: 600;
 }
 
-main .section-five .two .coleccion .card-3 .info button {
-    background-color: #2e8eee;
-    padding: 1rem;
-    border: none;
-    border-radius: 8px;
-    width: 100%;
+main .section-five .two .coleccion .card-3 .info a {
+    text-decoration: none;
 }
 
-main .section-five .two .coleccion .card-3 .info button a {
-    text-decoration: none;
+main .section-five .two .coleccion .card-3 .info button {
+    background-color: #2e8eee;
     color: #fff;
 }
+
 
 /* ACTIVIDAD */
 

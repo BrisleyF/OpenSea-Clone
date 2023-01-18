@@ -50,11 +50,11 @@
                         </div>
                         <div class="botones">
                             <% if(articulo.creador = userId) { %>
-                                <button class="venta"><a href="/vender/<%= articulo._id %>">Vender</a></button>
+                                <a href="/vender/<%= articulo._id %>"><button class="venta">Vender</button></a>
                             <%} else { %>
-                                <button class="carrito"><a href="/carrito/agregar/<%= articulo._id %>">Add to cart</a></button>
+                                <a href="/carrito/agregar/<%= articulo._id %>"><button class="carrito">Add to cart</button></a>
                             <% } %>
-                            <button class="oferta"><a href="">Hacer oferta</a></button>
+                            <a href=""><button class="oferta">Hacer oferta</button></a>
                         </div>
                     </div>
                 </div>

@@ -149,9 +149,9 @@
                             <p>Precio: <%= articulo.precio %> $</p>
                             <p>Termina en 5 horas</p>
                             <% if(articulo.creador = userId) { %>
-                                <button class="venta"><a href="/vender/<%= articulo._id %>">Vender</a></button>
+                                <a href="/vender/<%= articulo._id %>"><button>Vender</button></a>
                             <%} else { %>
-                                <button><a href="/carrito/agregar/<%= articulo._id %>">Add to cart</a></button>
+                                <a href="/carrito/agregar/<%= articulo._id %>"><button>Add to cart</button></a>
                             <% } %>
                         </div>
                     </div>

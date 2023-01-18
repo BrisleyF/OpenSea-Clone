@@ -120,15 +120,17 @@ main .section-one .two .contenedor-precio .precio .botones .carrito {
     padding: 1rem;
     border: none;
     border-radius: 8px;
-    width: 48%;
+    width: 100%;
+    color: #fff;
 }
 
 main .section-one .two .contenedor-precio .precio .botones .venta {
-    background-color: #2e8eee;;
+    background-color: #2e8eee;
     padding: 1rem;
     border: 1px solid rgb(219, 219, 219);
     border-radius: 8px;
-    width: 48%;
+    width: 100%;
+    color: #fff;
 } 
 
 main .section-one .two .contenedor-precio .precio .botones .oferta {
@@ -136,29 +138,15 @@ main .section-one .two .contenedor-precio .precio .botones .oferta {
     padding: 1rem;
     border: 1px solid rgb(219, 219, 219);
     border-radius: 8px;
-    width: 48%;
+    width: 100%;
+    color: #2e8eee;
 } 
 
-main .section-one .two .contenedor-precio .precio .botones .carrito a {
+main .section-one .two .contenedor-precio .precio .botones a {
     text-decoration: none;
-    color: #fff;
     font-size: 1rem;
     font-weight: 600;
-}
-
-main .section-one .two .contenedor-precio .precio .botones .venta a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-
-main .section-one .two .contenedor-precio .precio .botones .oferta a {
-    text-decoration: none;
-    color: #2e8eee;
-    font-size: 1rem;
-    font-weight: 600;
+    width: 48%;
 }
 
 main .section-one .two .contenedor-precio .precio .botones .carrito:hover {

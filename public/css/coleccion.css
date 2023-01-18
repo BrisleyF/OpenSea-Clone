@@ -221,12 +221,12 @@ main .section-four .two .coleccion .card-3 .info p {
     font-weight: 600;
 }
 
-main .section-four .two .coleccion .card-3 .info button {
-    background-color: #2e8eee;
+main .section-four .two .coleccion .card-3 .info a {
+    text-decoration: none;
 }
 
-main .section-four .two .coleccion .card-3 .info button a {
-    text-decoration: none;
+main .section-four .two .coleccion .card-3 .info button {
+    background-color: #2e8eee;
     color: #fff;
 }
 

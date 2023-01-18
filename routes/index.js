@@ -8,6 +8,7 @@ const perfilController = require('../controllers/perfilController');
 const carritoController = require('../controllers/carritoController');
 const walletContoller = require('../controllers/walletController');
 const verificarUser = require('../middleware/verificarUser');
+const venderController = require('../controllers/venderController');
 
 module.exports = function() {
 
@@ -50,7 +51,9 @@ module.exports = function() {
 
     router.get('/delete/:id', carritoController.eliminarArticulo)
     
-    router.get('/delete', carritoController.eliminarTodo)
+    router.get('/delete', carritoController.eliminarTodo);
+
+    router.post('/comprar', carritoController.comprar)
 
     // Perfil
     router.get('/perfil', perfilController.mostrarPerfil);
@@ -72,6 +75,8 @@ module.exports = function() {
 
     router.post('/depositar', walletContoller.depositarSaldo);
 
+    // Vender 
+    router.get('/vender/:id', venderController.mostarFormulario);
 
     return router;
 }
