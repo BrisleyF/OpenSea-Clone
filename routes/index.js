@@ -62,8 +62,6 @@ module.exports = function() {
 
     router.get('/perfil/coleccionado', perfilController.perfilColeccionado);
 
-    router.get('/perfil/destacado', perfilController.perfilDestacado);
-
     router.get('/perfil/actividad', perfilController.perfilActividad);
 
     router.get('/perfil/ajustes/:id', perfilController.mostrarAjustes);
@@ -77,6 +75,8 @@ module.exports = function() {
 
     // Vender 
     router.get('/vender/:id', venderController.mostarFormulario);
+
+    router.post('/vender/:id', venderController.enviarAnuncio);
 
     return router;
 }

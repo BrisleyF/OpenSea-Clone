@@ -183,11 +183,11 @@ main .contenido table button {
     border-radius: 8px;
     background-color: #2e8eee;
     padding: 0.5rem;
+    color: #fff;
 }
 
-main .contenido table button a {
+main .contenido table tr td a {
     text-decoration: none;
-    color: #fff;
 }
 
 main .section-two .actividad {

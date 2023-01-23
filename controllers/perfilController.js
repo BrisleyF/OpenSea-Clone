@@ -2,6 +2,7 @@ const User = require('../model/User');
 const cloudinary  = require('cloudinary');
 const fs = require('fs-extra');
 const Articulo = require('../model/Articulo');
+const Anuncio = require('../model/Anuncio');
 
 if (process.env.NODE_ENV !== 'production') {
 	const dotenv = require('dotenv').config();
@@ -20,7 +21,11 @@ exports.mostrarPerfil = async (req, res) => {
 
     const articulos = await Articulo.find({creador: userId});
 
-    res.render('perfil', {usuario, articulos, userId});
+    const misArticulos = await Articulo.find({propietarioId: userId}).populate('creador');
+
+    const anuncios = await Anuncio.find({user: userId});
+
+    res.render('perfil', {usuario, articulos, misArticulos, anuncios, userId});
 }
 
 exports.perfilCreado = async (req, res) => {
@@ -35,13 +40,6 @@ exports.perfilColeccionado = async (req, res) => {
     const usuario = await User.findById({_id: userId});
 
     res.render('perfil-coleccionado', {usuario});
-}
-
-exports.perfilDestacado = async (req, res) => {
-    let userId = req.session.passport.user.id;
-    const usuario = await User.findById({_id: userId});
-
-    res.render('perfil-destacado', {usuario});
 }
 
 exports.perfilActividad = async (req, res) => {

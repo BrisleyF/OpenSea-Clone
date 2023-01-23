@@ -1,12 +1,12 @@
 const User = require("../model/User");
-const Articulos = require('../model/Articulo');
+const Articulo = require('../model/Articulo');
 
 exports.mostrarWallet = async (req, res) => {
     const userId = req.session.passport.user.id;
 
     const usuario = await User.findOne({_id: userId});
 
-    const articulos = await Articulos.find({propietarioId: userId}).populate('creador');
+    const articulos = await Articulo.find({propietarioId: userId}).populate('creador');
 
     res.render('wallet', {usuario, articulos});
 }
