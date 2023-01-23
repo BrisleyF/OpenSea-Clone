@@ -132,32 +132,64 @@
                 </div>
             </div>
             <div class="two">
+                <% if(anuncios.length == 0) { %>
                 <% for(const articulo of articulos) { %>
-                <div class="items">
-                    <p><%= articulos.length %></p>
-                </div>
-                <div class="coleccion">
-                    
-                    <div class="card-3">
-                        <div class="contenedor-img">
-                            <a href="/detalle/<%= articulo._id %>">
-                                <img src="<%= articulo.imageArticulo %>" alt=""> 
-                            </a>
-                        </div>
-                        <div class="info">
-                            <p><%= articulo.nombre %></p>
-                            <p>Precio: <%= articulo.precio %> $</p>
-                            <p>Termina en 5 horas</p>
-                            <% if(articulo.creador = userId) { %>
-                                <a href="/vender/<%= articulo._id %>"><button>Vender</button></a>
-                            <%} else { %>
-                                <a href="/carrito/agregar/<%= articulo._id %>"><button>Add to cart</button></a>
-                            <% } %>
+                    <div class="items">
+                        <p>
+                            <%= articulos.length %>
+                        </p>
+                    </div>
+                    <div class="coleccion">
+                        <div class="card-3">
+                            <div class="contenedor-img">
+                                <a href="/detalle/<%= articulo._id %>">
+                                    <img src="<%= articulo.imageArticulo %>" alt="">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <p>
+                                    <%= articulo.nombre %>
+                                </p>
+                                <p>Precio: <%= articulo.precio %> $</p>
+                                <p>Termina en 5 horas</p>
+                                <% if(articulo.creador._id == userId) { %>
+                                    <a href="/vender/<%= articulo._id %>"><button>Vender</button></a>
+                                <%} else { %>
+                                    <a href=""><button>No tiene anuncio</button></a>
+                                <% } %>
+                            </div>
                         </div>
                     </div>
+                <% } %>  
 
+                <%} else { %>
+                    
+                <% for(const anuncio of anuncios) { %>
+                    <div class="items">
+                        <p>
+                            <%= anuncios.length %>
+                        </p>
                     </div>
-                </div>
+                    <div class="coleccion">
+                        <div class="card-3">
+                            <div class="contenedor-img">
+                                <a href="/detalle/<%= anuncio.articulo._id %>">
+                                    <img src="<%= anuncio.articulo.imageArticulo %>" alt="">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <p><%= anuncio.articulo.nombre %></p>
+                                <p>Precio: <%= anuncio.precioSalida %> $</p>
+                                <p>Termina en 5 horas</p>
+                                <% if(anuncio.articulo.creador._id == userId) { %>
+                                    <a href="/detalle/<%= anuncio.articulo._id %>"><button>Ya tiene anuncio</button></a>
+                                <%} else { %>
+                                    <a href="/carrito/agregar/<%= anuncio.articulo._id %>"><button>Add to cart</button></a>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
                 <% } %>
             </div>
             

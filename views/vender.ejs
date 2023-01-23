@@ -21,7 +21,7 @@
                 <h2>Anuncio para venta</h2>
             </div>
             <div>
-                <form action="">
+                <form action="/vender/<%= articulo._id %>" method="post">
                     <h4>Elige un tipo de venta</h4>
                     <label for="" class="flex">
                         <div>
@@ -29,7 +29,7 @@
                             <p>El artículo se anuncia al precio que has establecido.</p>
                         </div>
                         <div>
-                            <input type="radio" name="tipo">
+                            <input type="radio" name="tipo" value="precio fijo">
                         </div>
                     </label>
                     <label for="" class="flex">
@@ -38,7 +38,7 @@
                             <p>El artículo se anuncia para subasta.</p>
                         </div>
                         <div>
-                            <input type="radio" name="tipo">
+                            <input type="radio" name="tipo" value="subasta">
                         </div>
                     </label>
                     <h4>Elije un método para la subasta</h4>
@@ -48,7 +48,7 @@
                             <p>La puja más alta gana al final.</p>
                         </div>
                         <div>
-                            <input type="radio" name="metodo">
+                            <input type="radio" name="metodo" value="mejor postor">
                         </div>
                     </label>
                     <label for="" class="flex">
@@ -57,7 +57,7 @@
                             <p>El precio va decreciendo hasta que alguien compra el artículo.</p>
                         </div>
                         <div>
-                            <input type="radio" name="metodo">
+                            <input type="radio" name="metodo" value="precio decreciente">
                         </div>
                     </label>
                     <h4>Establece el precio</h4>
@@ -69,10 +69,10 @@
                     </div>
                     <h4>Establece la duración</h4>
                     <select name="duracion" id="">
-                        <option value="1">1 día</option>
-                        <option value="3">3 días</option>
-                        <option value="7">7 días</option>
-                        <option value="30">1 mes</option>
+                        <option name="duracion" value="1">1 día</option>
+                        <option name="duracion" value="3">3 días</option>
+                        <option name="duracion" value="7">7 días</option>
+                        <option name="duracion" value="30">1 mes</option>
                     </select>
                     <h4>Resumen</h4>
                     <div class="contenedor">

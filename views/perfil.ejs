@@ -93,13 +93,37 @@
                             <p><%= articulo.nombre %></p>
                             <p>Precio: <%= articulo.precio %> $</p>
                             <p>Termina en 5 horas</p>
-                            <% if(articulo.creador = userId) { %>
+                            <% if(!anuncios) { %>
                                 <a href="/vender/<%= articulo._id %>"><button>Vender</button></a>
                             <%} else { %>
-                                <a href="/carrito/agregar/<%= articulo._id %>"><button>Add to cart</button></a>
+                                <a href=""><button>Ya tiene anuncio</button></a>
                             <% } %>
                         </div>
                     </div>
+                    <% } %>
+
+                    <% for(const miArticulo of misArticulos) { %>
+                    <% if(miArticulo.propietario == miArticulo.creador.nombre) { %>
+
+                    <%} else { %>
+                            <div class="card-3">
+                                <div class="contenedor-img">
+                                    <a href="/detalle/<%= miArticulo._id %>">
+                                        <img src="<%= miArticulo.imageArticulo %>" alt=""> 
+                                    </a>
+                                </div>
+                                <div class="info">
+                                    <p><%= miArticulo.nombre %></p>
+                                    <p>Precio: <%= miArticulo.precio %> $</p>
+                                    <p>Termina en 5 horas</p>
+                                    <% if(!anuncios) { %>
+                                        <a href="/vender/<%= miArticulo._id %>"><button>Vender</button></a>
+                                    <%} else { %>
+                                        <a href=""><button>Ya tiene anuncio</button></a>
+                                    <% } %>
+                                </div>
+                            </div>
+                    <% } %>    
                     <% } %>
                 </div>
             </div>
