@@ -35,14 +35,14 @@
     
                 <div class="two">
                     <div class="contenedor-header">
-                        <p> <span><%= articulo.coleccion.nombre %></span></p>
+                        <p> <span><a href="/coleccion/<%= articulo.coleccion._id %>"><%= articulo.coleccion.nombre %></a></span></p>
                         <h1><%= articulo.nombre %></h1>
-                        <p>Propiedad de <span><%= articulo.propietario %></span></p>
+                        <p>Propiedad de <span><a href="/perfil"><%= articulo.propietario %></a></span></p>
                     </div>
                     <div class="contenedor-precio">
                         <div class="contenedor-reloj">
                             <i class="fa-regular fa-clock"></i>
-                            <p>Fin de la venta 1 de febrero de 2023 a las 10:53 a. m. GMT-4 </p>
+                            <p>No hay fecha porque el artículo no esta anunciado.</p>
                         </div>
                         <div class="precio">
                             <p>Precio actual</p>
@@ -77,10 +77,10 @@
                                     <th></th>
                                 </tr>
                                 <tr>
-                                    <td>0,1 ETH</td>
-                                    <td>$126,26</td>
-                                    <td>28 days</td>
-                                    <td>fulanito</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td><button><a href="">Comprar</a></button></td>
                                 </tr>
                             </table>
@@ -101,11 +101,11 @@
                                     <th>de</th>
                                 </tr>
                                 <tr>
-                                    <td>0,0042 WETH</td>
-                                    <td>$5,25</td>
-                                    <td>95% debajo</td>
-                                    <td>3 days</td>
-                                    <td>fulanito</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </table>
                         </div>
@@ -162,14 +162,14 @@
     
                     <div class="two">
                         <div class="contenedor-header">
-                            <p> <span><%= anuncio.coleccion.nombre %></span></p>
+                            <p> <span><a href="/coleccion/<%= anuncio.coleccion._id %>"><%= anuncio.coleccion.nombre %></a></span></p>
                             <h1><%= anuncio.articulo.nombre %></h1>
-                            <p>Propiedad de <span><%= articulo.propietario %></span></p>
+                            <p>Propiedad de <span><a href="/perfil"><%= articulo.propietario %></a></span></p>
                         </div>
                         <div class="contenedor-precio">
                             <div class="contenedor-reloj">
                                 <i class="fa-regular fa-clock"></i>
-                                <p>Fin de la venta 1 de febrero de 2023 a las 10:53 a. m. GMT-4 </p>
+                                <p>Fin de la venta el <%= anuncio.vencimiento %></p>
                             </div>
                             <div class="precio">
                                 <p>Precio actual</p>
@@ -184,7 +184,11 @@
                                             <a href=""><button class="venta">Ya tiene un anuncio</button></a>
                                         <%} else { %>
                                             <a href="/carrito/agregar/<%= anuncio.articulo._id %>"><button class="carrito">Add to cart</button></a>
-                                            <a href=""><button class="oferta">Hacer oferta</button></a>
+                                            <% if(anuncio.tipo === 'precio fijo') { %>
+                                            
+                                            <%} else { %>
+                                                <a href="/ofertar/<%= anuncio.articulo._id %>"><button class="oferta">Hacer oferta</button></a>
+                                            <% } %>    
                                         <% } %>
                                     <% } %>
                                 </div>
@@ -204,14 +208,18 @@
                                         <th></th>
                                     </tr>
                                     <tr>
-                                        <td>$<%= anuncio.precioSalida %></td>
-                                        <td><%= anuncio.duracion %> días</td>
+                                        <td><%= anuncio.precioSalida %> $</td>
+                                        <td><%= anuncio.vencimiento %></td>
                                         <td><%= articulo.propietario %></td>
                                         <td><a href="/carrito/agregar/<%= anuncio.articulo._id %>"><button>Comprar</button></a></td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
+
+                        <% if(anuncio.tipo === 'precio fijo') { %>
+
+                        <%} else { %>   
                         <div class="ofertas">
                             <div class="titulo">
                                 <i class="fa-solid fa-list"></i>
@@ -221,21 +229,22 @@
                                 <table>
                                     <tr>
                                         <th>Precio</th>
-                                        <th>Precio en USD</th>
                                         <th>Diferencia de suelo</th>
                                         <th>Vencimiento</th>
                                         <th>de</th>
                                     </tr>
+                                    <% for(const oferta of ofertas) { %>
                                     <tr>
-                                        <td>0,0042 WETH</td>
-                                        <td>$5,25</td>
-                                        <td>95% debajo</td>
-                                        <td>3 days</td>
-                                        <td>fulanito</td>
+                                        <td><%= oferta.precio %> $</td>
+                                        <td><%= oferta.diferencia %> % debajo</td>
+                                        <td><%= oferta.vencimiento %></td>
+                                        <td><%= oferta.userName %></td>
                                     </tr>
+                                    <% } %>
                                 </table>
                             </div>
                         </div>
+                        <% } %>    
                     </div>
                 </section>
     

@@ -75,8 +75,9 @@ main .section-one .two .contenedor-header h1 {
     font-size: 2rem;
 }
 
-main .section-one .two .contenedor-header span {
+main .section-one .two .contenedor-header span a {
     color: #2018e2;
+    text-decoration: none;
 }
 
 main .section-one .two .contenedor-precio, .anuncio, .ofertas, .actividad {

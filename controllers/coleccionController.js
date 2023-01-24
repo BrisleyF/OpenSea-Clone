@@ -4,6 +4,7 @@ const fs = require('fs-extra');
 const User = require('../model/User');
 const Articulo = require('../model/Articulo');
 const Anuncio = require('../model/Anuncio');
+const Oferta = require('../model/Oferta');
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -79,7 +80,9 @@ exports.detalleNFT = async (req, res) => {
 
     const anuncio = await Anuncio.findOne({articulo: id}).populate('articulo').populate('coleccion');
 
-    res.render('detalle', {articulo, anuncio, userId});
+    const ofertas = await Oferta.find({articulo: id});
+
+    res.render('detalle', {articulo, anuncio, ofertas, userId});
 }
 
 exports.mostarMisColecciones = async (req, res) => {
@@ -115,8 +118,8 @@ exports.agregarArticulo = async (req, res) => {
         imageArticulo: result.url,
         creador: userId,
         coleccion: id,
-        propiedad: userName,
-        propiedadId: userId
+        propietario: userName,
+        propietarioId: userId
     })
 
     await articulo.save();

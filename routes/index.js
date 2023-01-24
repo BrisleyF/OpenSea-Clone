@@ -9,6 +9,7 @@ const carritoController = require('../controllers/carritoController');
 const walletContoller = require('../controllers/walletController');
 const verificarUser = require('../middleware/verificarUser');
 const venderController = require('../controllers/venderController');
+const ofertarController = require('../controllers/ofertarController');
 
 module.exports = function() {
 
@@ -77,6 +78,11 @@ module.exports = function() {
     router.get('/vender/:id', venderController.mostarFormulario);
 
     router.post('/vender/:id', venderController.enviarAnuncio);
+
+    // Ofertas 
+    router.get('/ofertar/:id', ofertarController.mostrarFormulario);
+
+    router.post('/ofertar/:id', ofertarController.enviarFormulario);
 
     return router;
 }

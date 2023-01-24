@@ -1,5 +1,8 @@
 const Anuncio = require('../model/Anuncio');
 const Articulo = require('../model/Articulo');
+const moment = require("moment");
+
+moment.locale('es');
 
 exports.mostarFormulario = async (req, res) => {
     const id = req.params.id;
@@ -17,6 +20,11 @@ exports.enviarAnuncio = async (req, res) => {
     const articulo = await Articulo.findOne({_id: id});
 
     const { tipo, metodo, precioSalida, precioFinal, duracion } = req.body;
+
+    // vencimiento 
+    let formato = 'LLLL'
+    let hoy = moment();
+    let vence = hoy.clone().add(duracion, 'days').format(formato);
     
     const anuncios = new Anuncio({
         tipo,
@@ -24,14 +32,14 @@ exports.enviarAnuncio = async (req, res) => {
         precioSalida,
         precioFinal,
         duracion,
+        vencimiento: vence,
         articulo: articulo._id,
         coleccion: articulo.coleccion,
         user: userId,
-        date: Date()
+        date: hoy.format(formato)
     })
 
     await anuncios.save();
     
-
-    res.redirect('/')
+    res.redirect(`/detalle/${id}`);
 }
