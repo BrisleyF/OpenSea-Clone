@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertar</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="/css/ofertar.css">
+</head>
+<body>
+    
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <h2>Hacer oferta</h2>
+        <section class="one">
+            <div>
+                <img src="<%= anuncio.articulo.imageArticulo %>" width="100" height="100">
+            </div>
+            <div>
+                <p><%= anuncio.articulo.nombre %></p>
+                <p><%= anuncio.coleccion.nombre %></p>
+            </div>
+        </section>
+        <section class="two">
+            <div class="cont">
+                <div>Balance</div>
+                <div><%= usuario.wallet.balance %> $</div>
+            </div>
+            <div class="cont">
+                <div>Precio suelo</div>
+                <% if(!anuncio.precioFinal) { %>
+                <div><%= anuncio.precioSalida %> $</div>
+                <%} else { %>
+                    <div><%= anuncio.precioFinal %> $</div>
+                <% } %>
+            </div>
+            <div class="cont">
+                <div>La mejor oferta</div>
+                <div><%=  %></div>
+            </div>
+        </section>
+        <% if(usuario.wallet.balance == 0) { %>
+            <div class="danger">
+                <p>Su balance es 0 $</p>
+                <p>No puede hacer una oferta.</p>
+                <p>Ir a la <a href="/wallet">Wallet</a> a recargar saldo.</p>
+            </div>
+            <section class="three">
+                <form action="/ofertar/<%= anuncio.articulo._id %>" method="post">
+                    <input type="text" placeholder="Precio" name="precio" disabled>
+                    <label for="">Duración</label>
+                    <select name="duracion" id="" disabled>
+                        <option value="1" name="duracion">1 día</option>
+                        <option value="3" name="duracion">3 día</option>
+                        <option value="7" name="duracion">7 día</option>
+                        <option value="30" name="duracion">1 mes</option>
+                    </select>
+                    <button>Hacer oferta</button>
+                </form>
+            </section>
+        <%} else { %>
+            <section class="three">
+                <form action="/ofertar/<%= anuncio.articulo._id %>" method="post">
+                    <input type="text" placeholder="Precio" name="precio">
+                    <label for="">Duración</label>
+                    <select name="duracion" id="">
+                        <option value="1" name="duracion">1 día</option>
+                        <option value="3" name="duracion">3 día</option>
+                        <option value="7" name="duracion">7 día</option>
+                        <option value="30" name="duracion">1 mes</option>
+                    </select>
+                    <button>Hacer oferta</button>
+                </form>
+            </section>
+        <% } %>
+    </main>
+
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>
+</html>

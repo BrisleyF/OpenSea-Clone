@@ -1,0 +1,82 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+main h2 {
+    padding: 2rem;
+    text-align: center;
+}
+
+main .one {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+main .one img {
+    border-radius: 8px;
+}
+
+main .one p {
+    padding: 0 0 0.5rem 2rem;
+}
+
+main .two {
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+main .two .cont {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+main .danger {
+    border: 2px solid red;
+    padding: 1rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+main .danger p {
+    padding-bottom: 1rem;
+}
+
+main .three {
+    padding: 2rem 0 ;
+}
+
+main .three form {
+    display: flex;
+    flex-direction: column;
+}
+
+main .three form input, select {
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+main .three form label {
+    margin-bottom: 0.5rem;
+}
+
+main .three form button {
+    width: 50%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    background-color: #2e8eee;
+}
