@@ -1,10 +1,13 @@
 const mongoose = require('mongoose'); 
-const { stringify } = require('uuid');
+
 
 const carritoSchema = new mongoose.Schema({
     nombre: { type: String },
     idArticulo: { type: String },
     creador: { type: String },
+    creadorId: { type: String},
+    propietarioId: { type: String},
+    propietario: {type: String },
     precio: { type: Number },
     ganancia: { type: String },
     image: { type: String },

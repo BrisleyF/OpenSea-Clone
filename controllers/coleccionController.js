@@ -5,6 +5,7 @@ const User = require('../model/User');
 const Articulo = require('../model/Articulo');
 const Anuncio = require('../model/Anuncio');
 const Oferta = require('../model/Oferta');
+const moment = require("moment");
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -21,7 +22,7 @@ exports.agregarColeccion = async (req, res) => {
     //console.log(req.body);
     //console.log(req.files);
 
-    const { nombre, descripcion, categoria, direccionWallet, comision } = req.body;
+    const { nombre, descripcion, categoria, comision } = req.body;
 
     const result1 = await cloudinary.v2.uploader.upload(req.files['imageLogoUrl'][0].path);
     const result2 = await cloudinary.v2.uploader.upload(req.files['imageBannerUrl'][0].path);
@@ -35,7 +36,6 @@ exports.agregarColeccion = async (req, res) => {
         nombre,
         descripcion,
         categoria,
-        direccionWallet,
         comision,
         public_id_logo: result1.public_id,
         public_id_banner: result2.public_id,
@@ -78,6 +78,10 @@ exports.detalleNFT = async (req, res) => {
 
     const articulo = await Articulo.findOne({_id: id}).populate('creador').populate('coleccion');
 
+    //const articulos = await Articulo.find({_id: id});
+
+    articulo.actividad 
+
     const anuncio = await Anuncio.findOne({articulo: id}).populate('articulo').populate('coleccion');
 
     const ofertas = await Oferta.find({articulo: id});
@@ -107,9 +111,13 @@ exports.agregarArticulo = async (req, res) => {
     const userId = req.session.passport.user.id;
     const userName = req.session.passport.user.nombre;
 
+    const coleccion = await Coleccion.findOne({_id: id});
+
     const { nombre, descripcion, precio } = req.body;
 
     const result = await cloudinary.v2.uploader.upload(req.files['imageArticulo'][0].path);
+
+    let formato = 'LLLL'
 
     const articulo = new Articulo({
         nombre,
@@ -119,7 +127,21 @@ exports.agregarArticulo = async (req, res) => {
         creador: userId,
         coleccion: id,
         propietario: userName,
-        propietarioId: userId
+        propietarioId: userId,
+        anunciado: false,
+        actividad: [  
+            {   
+                evento: 'Agregado',    
+                imageArticulo: result.url,
+                nombre,
+                coleccion: coleccion.nombre,
+                precio,
+                emisor: 'N/A',
+                receptor: userName,
+                date: moment().format(formato)
+            }
+        ],
+        date: moment().format(formato)
     })
 
     await articulo.save();
@@ -128,4 +150,20 @@ exports.agregarArticulo = async (req, res) => {
     
 
     res.redirect(`/coleccion/${id}`);
+}
+
+exports.eliminarArticulo = async (req, res) => {
+    const id = req.params.id;
+
+    const art = await Articulo.findOne({_id: id}); 
+
+    const coleccion = await Coleccion.findOne({});
+
+    await Articulo.findByIdAndDelete({ _id: id });
+
+    await Anuncio.findByIdAndDelete({articulo: id})
+
+    await Oferta.deleteMany({articulo: id});
+
+    res.redirect(`/coleccion/${art.coleccion}`);
 }

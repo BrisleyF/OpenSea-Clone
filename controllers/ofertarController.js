@@ -34,68 +34,36 @@ exports.enviarFormulario = async (req, res) => {
     let vence = hoy.clone().add(duracion, 'days').format(formato);
 
     // diferencia 
-    if (anuncio.tipo == 'precio fijo') {
-        let precioSalida = anuncio.precioSalida;
-        let precioOferta = precio;
-        let diferenciaDeprecios = precioSalida - precioOferta;
-        let cien = diferenciaDeprecios * 100;
-        let diferencia = Math.round(cien / precioSalida);
-
-        const ofertas = new Oferta({
-            precio, 
-            duracion,
-            diferencia: diferencia, 
-            vencimiento: vence,
-            articulo: id,
-            coleccion: anuncio.coleccion._id,
-            user: userId,
-            userName: userName,
-            date: hoy.format(formato)
-        });
+    let diferenciaDeprecios = 0;
+    let diferencia = 0;
+    let precioOferta = precio;
     
-        await ofertas.save();
 
-    } else if (anuncio.tipo == 'subasta' && anuncio.metodo == 'mejor postor') {
+    if (anuncio.tipo == 'precio fijo' || (anuncio.tipo == 'subasta' && anuncio.metodo == 'mejor postor')) {
         let precioSalida = anuncio.precioSalida;
-        let precioOferta = precio;
-        let diferenciaDeprecios = precioSalida - precioOferta;
+        diferenciaDeprecios = precioSalida - precioOferta;
         let cien = diferenciaDeprecios * 100;
-        let diferencia = Math.round(cien / precioSalida);
-
-        const ofertas = new Oferta({
-            precio, 
-            duracion,
-            diferencia: diferencia, 
-            vencimiento: vence,
-            articulo: id,
-            coleccion: anuncio.coleccion._id,
-            user: userId,
-            userName: userName,
-            date: hoy.format(formato)
-        });
-    
-        await ofertas.save();
+        diferencia = Math.round(cien / precioSalida);
     } else {
         let precioSuelo = anuncio.precioFinal;
-        let precioOferta = precio;
-        let diferenciaDeprecios = precioSuelo - precioOferta;
+        diferenciaDeprecios = precioSuelo - precioOferta;
         let cien = diferenciaDeprecios * 100;
-        let diferencia = Math.round(cien / precioSuelo);
-    
-        const ofertas = new Oferta({
-            precio, 
-            duracion,
-            diferencia: diferencia, 
-            vencimiento: vence,
-            articulo: id,
-            coleccion: anuncio.coleccion._id,
-            user: userId,
-            userName: userName,
-            date: hoy.format(formato)
-        });
-    
-        await ofertas.save();
+        diferencia = Math.round(cien / precioSuelo);
     }
+
+    const ofertas = new Oferta({
+        precio, 
+        duracion,
+        diferencia: diferencia, 
+        vencimiento: vence,
+        articulo: id,
+        coleccion: anuncio.coleccion._id,
+        user: userId,
+        userName: userName,
+        date: hoy.format(formato)
+    });
+
+    await ofertas.save();
 
     res.redirect(`/detalle/${id}`);
 }

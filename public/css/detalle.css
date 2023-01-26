@@ -64,6 +64,8 @@ main .section-one .two {
 main .section-one .two .contenedor-header {
     margin: 1.5rem 1.5rem 0 1.5rem;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 main .section-one .two .contenedor-header p {
@@ -78,6 +80,17 @@ main .section-one .two .contenedor-header h1 {
 main .section-one .two .contenedor-header span a {
     color: #2018e2;
     text-decoration: none;
+}
+
+main .section-one .two .contenedor-header button {
+    background-color: red;
+    padding: 0.5rem;
+    border: none;
+}
+
+main .section-one .two .contenedor-header button a {
+    text-decoration: none;
+    color: #fff;
 }
 
 main .section-one .two .contenedor-precio, .anuncio, .ofertas, .actividad {
@@ -184,11 +197,11 @@ main .contenido table button {
     border-radius: 8px;
     background-color: #2e8eee;
     padding: 0.5rem;
-    color: #fff;
 }
 
 main .contenido table tr td a {
     text-decoration: none;
+    color: #fff;
 }
 
 main .section-two .actividad {

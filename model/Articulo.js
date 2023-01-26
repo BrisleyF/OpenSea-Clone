@@ -9,7 +9,9 @@ const articuloSchema = new mongoose.Schema({
     coleccion: { type: mongoose.Schema.ObjectId, ref: 'Coleccion'},
     propietario: { type: String },
     propietarioId: { type: String},
-    date: {type: Date}
+    anunciado: { type: Boolean },
+    actividad: { type: Array },
+    date: {type: String}
 });
 
 const Articulo = mongoose.model('Articulo', articuloSchema); 

@@ -3,6 +3,7 @@ const cloudinary  = require('cloudinary');
 const fs = require('fs-extra');
 const Articulo = require('../model/Articulo');
 const Anuncio = require('../model/Anuncio');
+const Coleccion = require('../model/Coleccion');
 
 if (process.env.NODE_ENV !== 'production') {
 	const dotenv = require('dotenv').config();
@@ -17,36 +18,41 @@ cloudinary.config({
 
 exports.mostrarPerfil = async (req, res) => {
     let userId = req.session.passport.user.id;
-    const usuario = await User.findById({_id: userId});
+    let userName = req.session.passport.user.nombre;
+
+    const usuario = await User.findOne({_id: userId});
 
     const articulos = await Articulo.find({creador: userId});
 
-    const misArticulos = await Articulo.find({propietarioId: userId}).populate('creador');
+    const anuncios = await Anuncio.find({user: userId}).populate('articulo');
 
-    const anuncios = await Anuncio.find({user: userId});
-
-    res.render('perfil', {usuario, articulos, misArticulos, anuncios, userId});
+    res.render('perfil', {usuario, articulos, anuncios, userId});
 }
+
 
 exports.perfilCreado = async (req, res) => {
     let userId = req.session.passport.user.id;
+    
     const usuario = await User.findById({_id: userId});
 
-    res.render('perfil-creado', {usuario});
+    const colecciones = await Coleccion.find({user: userId});
+
+    const articulos = await Articulo.find({creador: userId});
+
+    const anuncios = await Anuncio.find({user: userId}).populate('articulo');
+
+    res.render('perfil-creado', {usuario, colecciones, articulos, anuncios, userId});
 }
 
 exports.perfilColeccionado = async (req, res) => {
     let userId = req.session.passport.user.id;
     const usuario = await User.findById({_id: userId});
 
-    res.render('perfil-coleccionado', {usuario});
-}
+    const misArticulos = await Articulo.find({propietarioId: userId}).populate('creador');
 
-exports.perfilActividad = async (req, res) => {
-    let userId = req.session.passport.user.id;
-    const usuario = await User.findById({_id: userId});
+    const anuncios = await Anuncio.find({user: userId});
 
-    res.render('perfil-actividad', {usuario});
+    res.render('perfil-coleccionado', {usuario, misArticulos, anuncios});
 }
 
 exports.mostrarAjustes = async (req, res) => {

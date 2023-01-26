@@ -45,6 +45,8 @@ module.exports = function() {
 
     router.get('/agregar/articulo/:id', coleccionesController.mostrarFormularioArticulo);
 
+    router.get('/eliminar/articulo/:id', coleccionesController.eliminarArticulo)
+
     // Carrito 
     router.get('/carrito', carritoController.mostarCarrito)
 
@@ -62,8 +64,6 @@ module.exports = function() {
     router.get('/perfil/creado', perfilController.perfilCreado);
 
     router.get('/perfil/coleccionado', perfilController.perfilColeccionado);
-
-    router.get('/perfil/actividad', perfilController.perfilActividad);
 
     router.get('/perfil/ajustes/:id', perfilController.mostrarAjustes);
 
