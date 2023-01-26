@@ -35,9 +35,14 @@
     
                 <div class="two">
                     <div class="contenedor-header">
-                        <p> <span><a href="/coleccion/<%= articulo.coleccion._id %>"><%= articulo.coleccion.nombre %></a></span></p>
-                        <h1><%= articulo.nombre %></h1>
-                        <p>Propiedad de <span><a href="/perfil"><%= articulo.propietario %></a></span></p>
+                        <div>
+                            <p> <span><a href="/coleccion/<%= articulo.coleccion._id %>"><%= articulo.coleccion.nombre %></a></span></p>
+                            <h1><%= articulo.nombre %></h1>
+                            <p>Propiedad de <span><a href="#"><%= articulo.propietario %></a></span></p>
+                        </div>
+                        <div>
+                            <button class="eliminar"><a href="/eliminar/articulo/<%= articulo._id %>">X</a></button>
+                        </div>
                     </div>
                     <div class="contenedor-precio">
                         <div class="contenedor-reloj">
@@ -50,14 +55,10 @@
                                 <span><strong><%= articulo.precio %> $</strong></span>
                             </div>
                             <div class="botones">
-                                <% if(!anuncio) { %>
-                                    <% if(articulo.creador._id == userId) { %>
-                                        <a href="/vender/<%= articulo._id %>"><button class="venta">Vender</button></a>
-                                    <%} else { %>
-                                        <a href=""><button class="venta">No tiene anuncio</button></a>
-                                    <% } %>
+                                <% if(articulo.creador._id == userId) { %>
+                                    <a href="/vender/<%= articulo._id %>"><button class="venta">Vender</button></a>
                                 <%} else { %>
-                                    
+                                    <a href=""><button class="venta">No tiene anuncio</button></a>
                                 <% } %>
                             </div>
                         </div>
@@ -81,7 +82,11 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td><button><a href="">Comprar</a></button></td>
+                                    <% if(articulo.creador._id == userId) { %>
+                                    
+                                    <%} else { %>
+                                        <td><button><a href="">Comprar</a></button></td>
+                                    <% } %>
                                 </tr>
                             </table>
                         </div>
@@ -128,13 +133,15 @@
                                 <th>Para</th>
                                 <th>Fecha</th>
                             </tr>
-                            <tr>
-                                <td>Transferir</td>
-                                <td>0,1 ETH</td>
-                                <td>fulanito 1</td>
-                                <td>fulanito 2</td>
-                                <td>Hace 3 días</td>
-                            </tr>
+                            <%  for (let i =0; i <articulo.actividad.length;  i++ ) { %>
+                                <tr>
+                                    <td><%= articulo.actividad[i].evento %> </td>
+                                    <td><%= articulo.actividad[i].precio %></td>
+                                    <td><%= articulo.actividad[i].emisor %></td>
+                                    <td><%= articulo.actividad[i].receptor %></td>
+                                    <td><%= articulo.actividad[i].date %></td>
+                                </tr>
+                            <% } %>
                         </table>
                     </div>
                 </div>
@@ -162,9 +169,18 @@
     
                     <div class="two">
                         <div class="contenedor-header">
-                            <p> <span><a href="/coleccion/<%= anuncio.coleccion._id %>"><%= anuncio.coleccion.nombre %></a></span></p>
-                            <h1><%= anuncio.articulo.nombre %></h1>
-                            <p>Propiedad de <span><a href="/perfil"><%= articulo.propietario %></a></span></p>
+                            <div>
+                                <p> <span><a href="/coleccion/<%= anuncio.coleccion._id %>"><%= anuncio.coleccion.nombre %></a></span></p>
+                                <h1><%= anuncio.articulo.nombre %></h1>
+                                <p>Propiedad de <span><a href="#"><%= articulo.propietario %></a></span></p>
+                            </div>
+                            <div>
+                                <% if(articulo.creador._id == userId) { %>
+                                <button class="eliminar"><a href="/eliminar/articulo/<%= articulo._id %>">X</a></button>
+                                <%} else { %>
+                                
+                                <% } %>    
+                            </div>
                         </div>
                         <div class="contenedor-precio">
                             <div class="contenedor-reloj">
@@ -177,20 +193,20 @@
                                     <span><strong><%= anuncio.precioSalida %> $</strong></span>
                                 </div>
                                 <div class="botones">
-                                    <% if(!anuncio) { %>
-                                        
-                                    <%} else { %>
                                         <% if(articulo.creador._id == userId) { %>
                                             <a href=""><button class="venta">Ya tiene un anuncio</button></a>
                                         <%} else { %>
-                                            <a href="/carrito/agregar/<%= anuncio.articulo._id %>"><button class="carrito">Add to cart</button></a>
-                                            <% if(anuncio.tipo === 'precio fijo') { %>
+                                            <% if(articulo.propietarioId == userId) { %>
+                                                <a href="/wallet"><button class="venta">Ya el artículo te pertenece</button></a>
+                                            <%} else { %>    
+                                                <a href="/carrito/agregar/<%= anuncio.articulo._id %>"><button class="carrito">Add to cart</button></a>
+                                                <% if(anuncio.tipo === 'precio fijo') { %>
                                             
-                                            <%} else { %>
-                                                <a href="/ofertar/<%= anuncio.articulo._id %>"><button class="oferta">Hacer oferta</button></a>
+                                                    <%} else { %>
+                                                        <a href="/ofertar/<%= anuncio.articulo._id %>"><button class="oferta">Hacer oferta</button></a>
+                                                    <% } %>  
                                             <% } %>    
                                         <% } %>
-                                    <% } %>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +227,11 @@
                                         <td><%= anuncio.precioSalida %> $</td>
                                         <td><%= anuncio.vencimiento %></td>
                                         <td><%= articulo.propietario %></td>
-                                        <td><a href="/carrito/agregar/<%= anuncio.articulo._id %>"><button>Comprar</button></a></td>
+                                        <% if(articulo.creador._id == userId || (articulo.propietarioId == userId)) { %>
+                                    
+                                        <%} else { %>
+                                            <td><button><a href="/carrito/agregar/<%= anuncio.articulo._id %>">Comprar</a></button></td>
+                                        <% } %>
                                     </tr>
                                 </table>
                             </div>
@@ -263,13 +283,15 @@
                                     <th>Para</th>
                                     <th>Fecha</th>
                                 </tr>
+                                <%  for (let i =0; i <articulo.actividad.length;  i++ ) { %>
                                 <tr>
-                                    <td>Transferir</td>
-                                    <td>0,1 ETH</td>
-                                    <td>fulanito 1</td>
-                                    <td>fulanito 2</td>
-                                    <td>Hace 3 días</td>
+                                    <td><%= articulo.actividad[i].evento %> </td>
+                                    <td><%= articulo.actividad[i].precio %></td>
+                                    <td><%= articulo.actividad[i].emisor %></td>
+                                    <td><%= articulo.actividad[i].receptor %></td>
+                                    <td><%= articulo.actividad[i].date %></td>
                                 </tr>
+                                <% } %>
                             </table>
                         </div>
                     </div>

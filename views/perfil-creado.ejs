@@ -15,13 +15,14 @@
         <%- include('../views/partials/header.ejs'); %>
     </header>
 
+     
     <main>
         <section class="section-one">
             <div class="fondo">
-                <img src="/image/fondo.png" alt="">
+                <img src="<%= usuario.imageBanner %>" alt="">
             </div>
             <div class="imagen">
-                <img src="/image/nft2.jpg" alt="">
+                <img src="<%= usuario.imagePerfil %>" alt="">
             </div>
         </section>
         <section class="section-two">
@@ -30,7 +31,7 @@
                     <h1><%= usuario.nombre %></h1>
                 </div>
                 <div class="iconos">
-                    <a href="/perfil/ajustes">
+                    <a href="/perfil/ajustes/<%= usuario._id %>">
                         <div><i class="fa-solid fa-ellipsis"></i></div>
                     </a>
                 </div>
@@ -44,18 +45,18 @@
             <nav class="nav">
                 <ul class="lista">
                     <li>
-                        <a class="destacado" href="/perfil">Destacado</a>
+                        <a href="/perfil">Perfil</a>
                     </li>
                     <li>
-                        <a class="coleccionado" href="/perfil/coleccionado">coleccionado</a>
+                        <a href="/perfil/creado">Creado</a>
                     </li>
                     <li>
-                        <a class="creado" href="/perfil/creado">Creado</a>
+                        <a href="/perfil/coleccionado">coleccionado</a>
                     </li>
-                    <li><a class="" href="/perfil/actividad">Actividad</a></li>
                 </ul>
             </nav>
         </section>
+        
         <section class="section-four carousel__contenedor">
             <div class="stores">
                 <button aria-label="Anterior" class="carousel__anterior_3" id="carousel__anterior">
@@ -63,50 +64,19 @@
                 </button>
     
                 <div class="carousel__lista_3">
+                    <% for(const coleccion of colecciones) { %>
                     <div class="card-4 carousel__elemento">
-                        <a href="/tienda/:id">
-                            <img src="/image/fondo.png" alt="">
+                        <a href="/coleccion/<%= coleccion._id %>">
+                            <img src="<%= coleccion.imageBannerUrl %>" alt="">
                             <div class="info">
                                 <div>
-                                    <img src="/image/nft2.jpg" alt="">
+                                    <img src="<%= coleccion.imageLogoUrl %>" alt="">
                                 </div>
-                                <h3>Nombre de la coleccion</h3>
+                                <h3><%= coleccion.nombre %></h3>
                             </div>
                         </a>
                     </div>
-                    <div class="card-4 carousel__elemento">
-                        <a href="/tienda/:id">
-                            <img src="/image/fondo.png" alt="">
-                            <div class="info">
-                                <div>
-                                    <img src="/image/nft2.jpg" alt="">
-                                </div>
-                                <h3>Nombre de la coleccion</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-4 carousel__elemento">
-                        <a href="/tienda/:id">
-                            <img src="/image/fondo.png" alt="">
-                            <div class="info">
-                                <div>
-                                    <img src="/image/nft2.jpg" alt="">
-                                </div>
-                                <h3>Nombre de la coleccion</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-4 carousel__elemento">
-                        <a href="/tienda/:id">
-                            <img src="/image/fondo.png" alt="">
-                            <div class="info">
-                                <div>
-                                    <img src="/image/nft2.jpg" alt="">
-                                </div>
-                                <h3>Nombre de la coleccion</h3>
-                            </div>
-                        </a>
-                    </div>
+                    <% } %>
                 </div>
                 
                 <button aria-label="Siguiente" class="carousel__siguiente_3">
@@ -114,6 +84,7 @@
                 </button> 
             </div>
         </section>
+
         <section class="section-five">
             <div class="one">
                 <div class="contenedor">
@@ -135,73 +106,36 @@
                     </select>
                 </div>
             </div>
+            
             <div class="two">
                 <div class="coleccion">
-                    <div class="card-3">
-                        <div class="contenedor-img">
-                            <a href="/detalle/:id">
-                                <img src="/image/nft.jpg" alt=""> 
-                            </a>
+                    <% for(const articulo of articulos) { %>
+                        <div class="card-3">
+                            <div class="contenedor-img">
+                                <a href="/detalle/<%= articulo._id %>">
+                                    <img src="<%= articulo.imageArticulo %>" alt=""> 
+                                </a>
+                            </div>
+                            <div class="info">
+                                <p><%= articulo.nombre %></p>
+                                <p>Precio: <%= articulo.precio %> $</p>
+                                <p>Termina en 5 horas</p>
+                                <% if(articulo.anunciado === false ) { %>
+                                    <% if(articulo.creador._id == userId) { %>
+                                        <a href="/vender/<%= articulo._id %>"><button>Vender</button></a>
+                                    <%} else { %>
+                                        <a href=""><button>No tiene anuncio</button></a>
+                                    <% } %>
+                                <%} else { %>
+                                    <% if(articulo.creador._id == userId) { %>
+                                        <a href="/detalle/<%= articulo._id %>"><button>Ya tiene anuncio</button></a>
+                                    <%} else { %>
+                                        <a href="/carrito/agregar/<%= articulo._id %>"><button>Add to cart</button></a>
+                                    <% } %>
+                                <% } %>  
+                            </div>
                         </div>
-                        <div class="info">
-                            <p>Mono #010</p>
-                            <p>Precio: 0.5 ETH</p>
-                            <p>Termina en 5 horas</p>
-                            <button><a href="">Add to cart</a></button>
-                        </div>
-                    </div>
-                    <div class="card-3">
-                        <div class="contenedor-img">
-                            <a href="#">
-                                <img src="/image/nft.jpg" alt=""> 
-                            </a>
-                        </div>
-                        <div class="info">
-                            <p>Mono #010</p>
-                            <p>Precio: 0.5 ETH</p>
-                            <p>Termina en 5 horas</p>
-                            <button><a href="">Add to cart</a></button>
-                        </div>
-                    </div>
-                    <div class="card-3">
-                        <div class="contenedor-img">
-                            <a href="#">
-                                <img src="/image/nft.jpg" alt=""> 
-                            </a>
-                        </div>
-                        <div class="info">
-                            <p>Mono #010</p>
-                            <p>Precio: 0.5 ETH</p>
-                            <p>Termina en 5 horas</p>
-                            <button><a href="">Add to cart</a></button>
-                        </div>
-                    </div>
-                    <div class="card-3">
-                        <div class="contenedor-img">
-                            <a href="#">
-                                <img src="/image/nft.jpg" alt=""> 
-                            </a>
-                        </div>
-                        <div class="info">
-                            <p>Mono #010</p>
-                            <p>Precio: 0.5 ETH</p>
-                            <p>Termina en 5 horas</p>
-                            <button><a href="">Add to cart</a></button>
-                        </div>
-                    </div>
-                    <div class="card-3">
-                        <div class="contenedor-img">
-                            <a href="#">
-                                <img src="/image/nft.jpg" alt=""> 
-                            </a>
-                        </div>
-                        <div class="info">
-                            <p>Mono #010</p>
-                            <p>Precio: 0.5 ETH</p>
-                            <p>Termina en 5 horas</p>
-                            <button><a href="">Add to cart</a></button>
-                        </div>
-                    </div>
+                    <% } %>
                 </div>
             </div>
         </section>

@@ -45,15 +45,14 @@
             <nav class="nav">
                 <ul class="lista">
                     <li>
-                        <a href="/perfil">Destacado</a>
-                    </li>
-                    <li>
-                        <a href="/perfil/coleccionado">coleccionado</a>
+                        <a href="/perfil">Perfil</a>
                     </li>
                     <li>
                         <a href="/perfil/creado">Creado</a>
                     </li>
-                    <li><a href="/perfil/actividad">Actividad</a></li>
+                    <li>
+                        <a href="/perfil/coleccionado">coleccionado</a>
+                    </li>
                 </ul>
             </nav>
         </section>
@@ -83,48 +82,35 @@
             <div class="two">
                 <div class="coleccion">
                     <% for(const articulo of articulos) { %>
-                    <div class="card-3">
-                        <div class="contenedor-img">
-                            <a href="/detalle/<%= articulo._id %>">
-                                <img src="<%= articulo.imageArticulo %>" alt=""> 
-                            </a>
-                        </div>
-                        <div class="info">
-                            <p><%= articulo.nombre %></p>
-                            <p>Precio: <%= articulo.precio %> $</p>
-                            <p>Termina en 5 horas</p>
-                            <% if(!anuncios) { %>
-                                <a href="/vender/<%= articulo._id %>"><button>Vender</button></a>
-                            <%} else { %>
-                                <a href=""><button>Ya tiene anuncio</button></a>
-                            <% } %>
-                        </div>
-                    </div>
-                    <% } %>
-
-                    <% for(const miArticulo of misArticulos) { %>
-                    <% if(miArticulo.propietario == miArticulo.creador.nombre) { %>
-
-                    <%} else { %>
-                            <div class="card-3">
-                                <div class="contenedor-img">
-                                    <a href="/detalle/<%= miArticulo._id %>">
-                                        <img src="<%= miArticulo.imageArticulo %>" alt=""> 
-                                    </a>
-                                </div>
-                                <div class="info">
-                                    <p><%= miArticulo.nombre %></p>
-                                    <p>Precio: <%= miArticulo.precio %> $</p>
-                                    <p>Termina en 5 horas</p>
-                                    <% if(!anuncios) { %>
-                                        <a href="/vender/<%= miArticulo._id %>"><button>Vender</button></a>
-                                    <%} else { %>
-                                        <a href=""><button>Ya tiene anuncio</button></a>
-                                    <% } %>
-                                </div>
+                        <div class="card-3">
+                            <div class="contenedor-img">
+                                <a href="/detalle/<%= articulo._id %>">
+                                    <img src="<%= articulo.imageArticulo %>" alt="">
+                                </a>
                             </div>
-                    <% } %>    
-                    <% } %>
+                            <div class="info">
+                                <p>
+                                    <%= articulo.nombre %>
+                                </p>
+                                <p>Precio: <%= articulo.precio %> $</p>
+                                <p>Termina en 5 horas</p>
+                                <% if(articulo.anunciado === false ) { %>
+                                    <% if(articulo.creador._id == userId) { %>
+                                        <a href="/vender/<%= articulo._id %>"><button>Vender</button></a>
+                                    <%} else { %>
+                                        <a href=""><button>No tiene anuncio</button></a>
+                                    <% } %>
+                                <%} else { %>
+                                    <% if(articulo.creador._id == userId) { %>
+                                        <a href="/detalle/<%= articulo._id %>"><button>Ya tiene anuncio</button></a>
+                                    <%} else { %>
+                                        <a href="/carrito/agregar/<%= articulo._id %>"><button>Add to cart</button></a>
+                                    <% } %>
+                                <% } %>  
+                            </div>
+                        </div>
+                        <% } %>
+
                 </div>
             </div>
         </section>
