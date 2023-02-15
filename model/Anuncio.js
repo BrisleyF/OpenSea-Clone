@@ -7,8 +7,10 @@ const anuncioSchema = new mongoose.Schema({
     precioFinal: { type: Number},
     duracion: { type: Number },
     vencimiento: { type: String},
+    vencimientoNow: { type: Number },
     articulo: { type: mongoose.Schema.ObjectId, ref: 'Articulo'},
     coleccion: { type: mongoose.Schema.ObjectId, ref: 'Coleccion'},
+    ofertas: { type: Boolean },
     user: { type: String},
     date: {type: String}
 });

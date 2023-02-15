@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subasta</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="/css/subasta.css">
+</head>
+<body>
+    
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <table>
+            <tr>
+                <th>NFT</th>
+                <th>Comprador</th>
+                <th>Monto</th>
+                <th>Accion</th>
+            </tr>
+            <% for(const oferta of ofertas) { %>
+            <% for(const anuncio of anuncios) { %>
+            <tr>
+                <td><%= anuncio.articulo.nombre %></td>
+                <td><%= oferta.userName %></td>
+                <% if(oferta.diferencia > 0) { %>
+                <td><%= oferta.precio %>$ <strong style="color: green;" >(<%= oferta.diferencia %>%)</strong> [<%= anuncio.precioSalida %>$]</td>
+                <%} else if (oferta.diferencia < 0) { %> 
+                    <td><%= oferta.precio %>$ <strong style="color: red;" >(<%= oferta.diferencia %>%)</strong> [<%= anuncio.precioSalida %>$]</td>
+                <%} else { %>   
+                    <td><%= oferta.precio %>$ <strong style="color: gray;" >(<%= oferta.diferencia %>%)</strong> [<%= anuncio.precioSalida %>$]</td>
+                <% } %>  
+                <td><a href="/subasta/transferir/<%= oferta._id %>"><button>Transferir</button></a></td>
+            </tr>
+            <% } %>
+            <% } %>
+        </table>
+        
+        <% for(const oferta of ofertas) { %>
+        <% if (oferta.user.balance > oferta.precio) { %> 
+
+        <%} else { %>
+            <div>
+                <p>El comprador no tiene saldo suficiente para hacer la transacción</p>
+            </div>
+        <% } %>
+        <% } %>
+    </main>
+
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>
+</html>

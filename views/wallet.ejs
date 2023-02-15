@@ -21,7 +21,7 @@
         <div class="contenedor-balance">
             <div>
                 <p>Saldo total</p>
-                <h3><%= usuario.wallet.balance %> $</h3>
+                <h3><%= usuario.balance %> $</h3>
             </div>
             <div>
                 <form action="/depositar" method="post">
@@ -33,7 +33,7 @@
         </div>
         <div class="titulo"><h3>Mis propiedades</h3></div>
         <div class="contenedor-articulos">
-            <% for(const articulo of articulos) { %>
+            <% for(const articulo of articulos) { %>  
             <div class="imagen">
                 <img src="<%= articulo.imageArticulo %>" alt="<%= articulo.nombre %>" width="50" height="50">
             </div>
@@ -47,7 +47,7 @@
                 <h4><%= articulo.propietario %></h4>
             </div>
             <div class="precio">
-                <h4><%= articulo.precio %> $</h4>
+                <h4><%= %> $</h4>
             </div>
             <% } %>
         </div>

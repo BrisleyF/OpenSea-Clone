@@ -28,7 +28,7 @@
         <section class="two">
             <div class="cont">
                 <div>Balance</div>
-                <div><%= usuario.wallet.balance %> $</div>
+                <div><%= usuario.balance %> $</div>
             </div>
             <div class="cont">
                 <div>Precio suelo</div>
@@ -43,7 +43,7 @@
                 <div><%=  %></div>
             </div>
         </section>
-        <% if(usuario.wallet.balance == 0) { %>
+        <% if(usuario.balance == 0) { %>
             <div class="danger">
                 <p>Su balance es 0 $</p>
                 <p>No puede hacer una oferta.</p>

@@ -3,13 +3,15 @@ const mongoose = require('mongoose');
 
 const carritoSchema = new mongoose.Schema({
     nombre: { type: String },
-    idArticulo: { type: String },
+    idArticulo: { type: mongoose.Schema.ObjectId, ref: 'Articulo'},
     creador: { type: String },
     creadorId: { type: String},
     propietarioId: { type: String},
     propietario: {type: String },
     precio: { type: Number },
-    ganancia: { type: String },
+    anuncio: { type: mongoose.Schema.ObjectId, ref: 'Anuncio'},
+    ganancia: { type: Number },
+    user: { type: mongoose.Schema.ObjectId, ref: 'User'},
     image: { type: String },
     date: {type: Date}
 });

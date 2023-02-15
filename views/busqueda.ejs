@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="/css/busqueda.css">
+</head>
+<body>
+    
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <% if(articulos.length == 0) { %>
+        <h1>No hay artículos que coincidan con la busqueda.</h1>
+    <% } %> 
+    <main>
+        <% for(const articulo of articulos) { %>
+        <div class="card-3">
+            <div class="contenedor-img">
+                <a href="/detalle/<%= articulo._id  %> ">
+                    <img src="<%= articulo.imageArticulo %>" alt=""> 
+                </a>
+            </div>
+            <div class="info">
+                <p><%= articulo.nombre %></p>
+                <p>Colección: <%= articulo.coleccion.nombre %> </p>
+            </div>
+        </div>
+        <% } %>
+    </main>
+
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>
+</html>

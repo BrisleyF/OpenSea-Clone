@@ -10,10 +10,8 @@ exports.registrar = async (req, res) => {
 		email, 
 		clave, 
 		date: Date(),
-		wallet: {
-			balance: 0,
-			articulos: []
-		}
+		balance: 0,
+		articulos: []
 	});
 
 	usuario.save(err => {

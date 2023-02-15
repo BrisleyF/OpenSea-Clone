@@ -32,7 +32,7 @@
                     <h4><%= carrito.nombre %></h4>
                 </div>
                 <div class="usuario">
-                    <h4><%= carrito.creador %></h4>
+                    <h4><%= carrito.propietario %></h4>
                 </div>
                 <div class="precio">
                     <h4><%= carrito.precio %> $</h4>
@@ -44,6 +44,15 @@
                 </div>
                 <% } %>
             </div>
+
+            <% if (user.balance === 0) { %>
+                <div class="danger">
+                    <p>No tienes saldo suficiente en la wallet</p>
+                </div>
+            <%} else { %>
+    
+            <% } %>
+
             <div class="contenedor-info">
                 <h4><strong>Precio total:</strong></h4>
                 <div><p><%= preciototal %> $</p></div>

@@ -7,7 +7,7 @@ const coleccionSchema = new mongoose.Schema({
     descripcion: { type: String, required: true },
     categoria: { type: String, required: true },
     direccionWallet: { type: String },
-    comision: { type: String, required: true },
+    comision: { type: Number, required: true },
     public_id_logo: { type: String},
     public_id_banner: { type: String},
     user: { type: mongoose.Schema.ObjectId, ref: 'User'},

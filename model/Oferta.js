@@ -7,7 +7,7 @@ const ofertaSchema = new mongoose.Schema({
     vencimiento: { type: String},
     articulo: { type: mongoose.Schema.ObjectId, ref: 'Articulo'},
     coleccion: { type: mongoose.Schema.ObjectId, ref: 'Coleccion'},
-    user: { type: String},
+    user: { type: mongoose.Schema.ObjectId, ref: 'User'},
     userName: { type: String},
     date: {type: String}
 });

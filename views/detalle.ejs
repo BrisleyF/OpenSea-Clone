@@ -52,10 +52,10 @@
                         <div class="precio">
                             <p>Precio actual</p>
                             <div>
-                                <span><strong><%= articulo.precio %> $</strong></span>
+                                <span><strong> $</strong></span>
                             </div>
                             <div class="botones">
-                                <% if(articulo.creador._id == userId) { %>
+                                <% if(articulo.propietarioId == userId) { %>
                                     <a href="/vender/<%= articulo._id %>"><button class="venta">Vender</button></a>
                                 <%} else { %>
                                     <a href=""><button class="venta">No tiene anuncio</button></a>
@@ -82,11 +82,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <% if(articulo.creador._id == userId) { %>
-                                    
-                                    <%} else { %>
-                                        <td><button><a href="">Comprar</a></button></td>
-                                    <% } %>
+                                    <td></td>
                                 </tr>
                             </table>
                         </div>
@@ -133,10 +129,10 @@
                                 <th>Para</th>
                                 <th>Fecha</th>
                             </tr>
-                            <%  for (let i =0; i <articulo.actividad.length;  i++ ) { %>
+                            <%  for (let i = 0; i < articulo.actividad.length;  i++ ) { %>
                                 <tr>
                                     <td><%= articulo.actividad[i].evento %> </td>
-                                    <td><%= articulo.actividad[i].precio %></td>
+                                    <td><%= articulo.actividad[i].precio %>$</td>
                                     <td><%= articulo.actividad[i].emisor %></td>
                                     <td><%= articulo.actividad[i].receptor %></td>
                                     <td><%= articulo.actividad[i].date %></td>
@@ -182,10 +178,27 @@
                                 <% } %>    
                             </div>
                         </div>
+
+                        <% if(articulo.propietarioId == userId) { %>
+                            <% if(hoy < anuncio.vencimientoNow) { %>
+                                
+                            <%} else { %>
+                                <% if(anuncio.ofertas) { %> 
+                                    <div class="subasta">
+                                        <a href="/subasta/<%= anuncio.articulo._id %>"><button class="verde">Cobrar la subasta</button></a>
+                                    </div>
+                                <%} else { %>
+                                
+                                <% } %>   
+                            <% } %>    
+                        <%} else { %>
+
+                        <% } %>    
+
                         <div class="contenedor-precio">
                             <div class="contenedor-reloj">
                                 <i class="fa-regular fa-clock"></i>
-                                <p>Fin de la venta el <%= anuncio.vencimiento %></p>
+                                <p>Fin del anuncio el <%= anuncio.vencimiento %></p>
                             </div>
                             <div class="precio">
                                 <p>Precio actual</p>
@@ -193,18 +206,34 @@
                                     <span><strong><%= anuncio.precioSalida %> $</strong></span>
                                 </div>
                                 <div class="botones">
-                                        <% if(articulo.creador._id == userId) { %>
+                                        <% if(articulo.creador._id == userId && (articulo.propietarioId == userId)) { %>
+                                            <% if(hoy < anuncio.vencimientoNow) { %>
                                             <a href=""><button class="venta">Ya tiene un anuncio</button></a>
+                                            <%} else { %>
+                                                <a href="/vender/<%= articulo._id %>"><button class="venta">Se vencio el anuncio</button></a>
+                                            <% } %>
                                         <%} else { %>
-                                            <% if(articulo.propietarioId == userId) { %>
+                                            <% if(articulo.propietarioId == userId ) { %>
                                                 <a href="/wallet"><button class="venta">Ya el artículo te pertenece</button></a>
                                             <%} else { %>    
-                                                <a href="/carrito/agregar/<%= anuncio.articulo._id %>"><button class="carrito">Add to cart</button></a>
-                                                <% if(anuncio.tipo === 'precio fijo') { %>
-                                            
+                                                <% if (hoy < anuncio.vencimientoNow) { %>
+                                                    <% if (!artCarrito) { %>
+                                                        <a href="/carrito/agregar/<%= anuncio.articulo._id %>"><button class="carrito">Add to cart</button></a>
                                                     <%} else { %>
-                                                        <a href="/ofertar/<%= anuncio.articulo._id %>"><button class="oferta">Hacer oferta</button></a>
+                                                        <a href="/detalle/<%= articulo._id %>"><button class="carrito">Ya en articulo esta en el carrito</button></a>
                                                     <% } %>  
+                                                <%} else { %>   
+                                                    <a href="#"><button class="venta">Se vencio el anuncio</button></a>
+                                                <% } %>  
+                                                <% if(anuncio.tipo === 'precio fijo')  { %>
+                                            
+                                                <%} else { %>
+                                                    <% if(hoy < anuncio.vencimientoNow) { %>
+                                                        <a href="/ofertar/<%= anuncio.articulo._id %>"><button class="oferta">Hacer oferta</button></a>
+                                                    <%} else { %>
+                                                        <a href="#"><button class="oferta">Se termino la subasta</button></a> 
+                                                    <% } %>  
+                                                <% } %>  
                                             <% } %>    
                                         <% } %>
                                 </div>
@@ -224,13 +253,17 @@
                                         <th></th>
                                     </tr>
                                     <tr>
-                                        <td><%= anuncio.precioSalida %> $</td>
+                                        <td><%= anuncio.precioSalida %>$</td>
                                         <td><%= anuncio.vencimiento %></td>
                                         <td><%= articulo.propietario %></td>
                                         <% if(articulo.creador._id == userId || (articulo.propietarioId == userId)) { %>
-                                    
+                                            <td></td>
                                         <%} else { %>
+                                            <% if(hoy < anuncio.vencimientoNow) { %>
                                             <td><button><a href="/carrito/agregar/<%= anuncio.articulo._id %>">Comprar</a></button></td>
+                                            <%} else { %>
+                                                <td></td>
+                                            <% } %>
                                         <% } %>
                                     </tr>
                                 </table>
@@ -255,8 +288,8 @@
                                     </tr>
                                     <% for(const oferta of ofertas) { %>
                                     <tr>
-                                        <td><%= oferta.precio %> $</td>
-                                        <td><%= oferta.diferencia %> % debajo</td>
+                                        <td><%= oferta.precio %>$</td>
+                                        <td><%= oferta.diferencia %>% </td>
                                         <td><%= oferta.vencimiento %></td>
                                         <td><%= oferta.userName %></td>
                                     </tr>
@@ -286,7 +319,7 @@
                                 <%  for (let i =0; i <articulo.actividad.length;  i++ ) { %>
                                 <tr>
                                     <td><%= articulo.actividad[i].evento %> </td>
-                                    <td><%= articulo.actividad[i].precio %></td>
+                                    <td><%= articulo.actividad[i].precio %>$</td>
                                     <td><%= articulo.actividad[i].emisor %></td>
                                     <td><%= articulo.actividad[i].receptor %></td>
                                     <td><%= articulo.actividad[i].date %></td>
