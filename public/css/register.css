@@ -47,3 +47,19 @@ main div form button {
     border-radius: 5px;
     color: #fff;
 }
+
+.warnings {
+    
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+    color: red;
+    padding-top: 20px;
+}
+
+@media only screen and (max-width: 570px) {
+    main div {
+        width: 90%;
+        margin: 0 auto;
+    }
+}

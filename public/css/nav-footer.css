@@ -356,8 +356,8 @@ html {
         padding: 1rem 0.5rem;
     }  
 
-    .navbar .three ul .icon i {
-        font-size: 15px;
+    .navbar .three ul .icon button i {
+        font-size: 1.2rem;
     }
 
     .container-footer {
