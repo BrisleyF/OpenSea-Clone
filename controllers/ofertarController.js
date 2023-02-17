@@ -15,7 +15,9 @@ exports.mostrarFormulario = async (req, res) => {
 
     const usuario = await User.findOne({_id: userId});
 
-    res.render('ofertar', {anuncio, usuario});
+    const oferta = await Oferta.findOne({ articulo: id}).sort({precio: -1}).populate('user');
+
+    res.render('ofertar', {anuncio, usuario, oferta});
 }
 
 exports.enviarFormulario = async (req, res) => {
@@ -68,12 +70,12 @@ exports.enviarFormulario = async (req, res) => {
 
     }
 
-
-    const vencimientoAnuncio = anuncio.vencimiento;
+    const vencimientoAnuncio = anuncio.vencimientoNow;
+    const hoyNow = Date.now();
     console.log(vencimientoAnuncio);
-    console.log(hoy.format(formato));
+    console.log(hoyNow);
     
-    if (hoy.format(formato) < vencimientoAnuncio) {
+    if (hoyNow < vencimientoAnuncio) {
         const ofertas = new Oferta({
             precio, 
             duracion,
@@ -95,6 +97,21 @@ exports.enviarFormulario = async (req, res) => {
                     ofertas: true
                 }
             });
+
+        const usuarioOfertante = await User.findOne({_id: userId});    
+        let restarBalance = parseInt(usuarioOfertante.balance) - precio;
+        let sumarBalanceDiferido = parseInt(usuarioOfertante.balanceDiferido) + precio;
+
+        const actualizarBalance = await User.updateOne(
+            {_id: userId},
+            {
+                $set: {
+                    balance: restarBalance,
+                    balanceDiferido: sumarBalanceDiferido
+                }
+            }
+            
+            );    
 
     } else {
         console.log('Se vencio el anuncio')

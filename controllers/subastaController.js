@@ -23,7 +23,7 @@ exports.transferir = async (req, res) => {
 
     const userComprador = await User.findOne({_id: oferta.user});
 
-    const restar = parseInt(userComprador.balance) - oferta.precio;
+    const restar = parseInt(userComprador.balanceDiferido) - oferta.precio;
 
     const userPropietario = await User.findOne({_id: oferta.articulo.propietarioId});
     
@@ -31,13 +31,13 @@ exports.transferir = async (req, res) => {
     
     const userCreador = await User.findOne({_id: oferta.articulo.creador});
 
-    if (userComprador.balance > oferta.precio) {
+    if (userComprador.balanceDiferido >= oferta.precio) {
 
         const comprador = await User.updateOne(
             { _id: oferta.user },
             {
                 $set: {
-                    balance: restar
+                    balanceDiferido: restar
                 }
             });
     
@@ -76,11 +76,11 @@ exports.transferir = async (req, res) => {
 
                 const montoPropietario = parseInt(userPropietario.balance) + restaComision;
 
-                console.log(resultado);
-                console.log(oferta.precio);
-                console.log(sumarComision);
-                console.log(restaComision);
-                console.log(montoPropietario);
+                console.log('precio de la oferta', oferta.precio);
+                console.log('% comision', resultado);
+                console.log('balance del creador + %', sumarComision);
+                console.log('precio de la oferta - %', restaComision);
+                console.log('balance del propietario + restaComision ', montoPropietario);
 
                 const propietario = await User.updateOne(
                     { _id: oferta.articulo.propietarioId },
@@ -118,6 +118,30 @@ exports.transferir = async (req, res) => {
                     anunciado: false
                     }
             });
+
+        const eliminarOfertaGanadora = await Oferta.deleteOne({_id: id});    
+
+        const ofertas = await Oferta.find({articulo: oferta.articulo}).populate('user'); 
+        
+        for (let i= 0; i < ofertas.length; i++) {
+
+            const precioOferta = ofertas[i].precio;
+
+            const userOferta = await User.findOne({_id: ofertas[i].user});
+
+            const restarBalanceDiferido = userOferta.balanceDiferido - precioOferta;
+
+            const sumarBalance = userOferta.balance + precioOferta;
+
+            const actualizar = await User.updateOne(
+                { _id: ofertas[i].user },
+                {
+                    $set: {
+                        balance: sumarBalance,
+                        balanceDiferido: restarBalanceDiferido 
+                    }
+                });
+        }
     
         const borrarOfertas = await Oferta.deleteMany({articulo: oferta.articulo});    
     

@@ -72,17 +72,29 @@ exports.enviarAjustes = async (req, res) => {
     const result1 = await cloudinary.v2.uploader.upload(req.files['imagePerfil'][0].path);
     const result2 = await cloudinary.v2.uploader.upload(req.files['imageBanner'][0].path);
 
-    const usuario = await User.updateOne(
-        { _id: userId },
-        {
-            $set: {
-                nombre,
-                bio,
-                email,
-                imagePerfil: result1.url,
-                imageBanner: result2.url
-            }
-        });
+    if (nombre === '' , bio === '' , email === '') {
+        const usuario = await User.updateOne(
+            { _id: userId },
+            {
+                $set: {
+                    imagePerfil: result1.url,
+                    imageBanner: result2.url
+                }
+            });
+    } else {
+        const usuario = await User.updateOne(
+            { _id: userId },
+            {
+                $set: {
+                    nombre,
+                    bio,
+                    email,
+                    imagePerfil: result1.url,
+                    imageBanner: result2.url
+                }
+            });
+    };
+
 
     await fs.unlink(req.files['imagePerfil'][0].path)
     await fs.unlink(req.files['imageBanner'][0].path)

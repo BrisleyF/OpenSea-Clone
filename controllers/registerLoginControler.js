@@ -11,6 +11,7 @@ exports.registrar = async (req, res) => {
 		clave, 
 		date: Date(),
 		balance: 0,
+		balanceDiferido: 0,
 		articulos: []
 	});
 
