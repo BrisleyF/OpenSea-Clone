@@ -214,7 +214,11 @@
                                             <% } %>
                                         <%} else { %>
                                             <% if(articulo.propietarioId == userId ) { %>
-                                                <a href="/wallet"><button class="venta">Ya el artículo te pertenece</button></a>
+                                                <% if (hoy < anuncio.vencimientoNow) { %>
+                                                    <a href="/wallet"><button class="venta">Ya el artículo te pertenece</button></a>
+                                                <%} else { %>
+                                                    <a href="/vender/<%= articulo._id %>"><button class="venta">Volver anunciar</button></a>
+                                                <% } %> 
                                             <%} else { %>    
                                                 <% if (hoy < anuncio.vencimientoNow) { %>
                                                     <% if (!artCarrito) { %>

@@ -17,17 +17,18 @@
     <main>
         <div>
         <h2>Completa tus datos</h2>
-        <form action="/register" method="post">
+        <form action="/register" method="post" id="form">
             <label for="">Nombre</label>
-            <input type="text" name="nombre">
+            <input type="text" name="nombre" id="nombre" required autocomplete="off">
             <p>Ingrésalo tal como figura en tu documento.</p>
             <label for="">Email</label>
-            <input type="text" name="email">
+            <input type="email" name="email" id="email" required autocomplete="off">
             <p>Asegúrate de tener acceso a este e-mail.</p>
             <label for="">Clave</label>
-            <input type="password" name="clave">
-            <p>Usa entre 6 y 20 caracteres.</p>
+            <input type="password" name="clave" id="clave" required minlength="4" maxlength="16" autocomplete="off">
+            <p>Usa más de 4 caracteres.</p>
             <button type="submit" value="registrar">Continuar</button>
+            <p class="warnings" id="warnings"></p>
         </form>
         </div>
     </main>
@@ -37,5 +38,6 @@
     </footer>
 
     <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+    <script src="/js/validacionRegister.js"></script>
 </body>
 </html>

@@ -24,6 +24,10 @@
                 <h3><%= usuario.balance %> $</h3>
             </div>
             <div>
+                <p>Saldo Diferido</p>
+                <h3><%= usuario.balanceDiferido %></h3>
+            </div>
+            <div>
                 <form action="/depositar" method="post">
                     <label for="">Añadir fondos</label>
                     <input type="text" placeholder="Introducir el monto" name="monto">
