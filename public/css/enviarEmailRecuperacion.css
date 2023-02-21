@@ -1,0 +1,35 @@
+main {
+    background-color: #f7f7f7;
+    padding: 3rem 0;
+    height: 100vh;
+}
+
+main .contenedor {
+    width: 60%;
+    margin: 0 auto;
+}
+
+main .contenedor form {
+    margin: 2rem 0;
+    padding: 2rem 2rem;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+main .contenedor form input {
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+main .contenedor form button {
+    width: 30%;
+    padding: 0.5rem;
+    margin: 0.5rem auto;
+    background-color: #3483fa;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}

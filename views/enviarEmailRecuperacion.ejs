@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña</title>
+    <%- include('../views/partials/head.ejs'); %>
+    <link rel="stylesheet" href="/css/enviarEmailRecuperacion.css">
+</head>
+<body>
+
+    <header>
+        <%- include('../views/partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <div class="contenedor">
+            <form action="/enviarEmailRecuperacion" method="post">
+                <h3>Colocar el correo donde Se le enviara un link para la recuperacion de la contraseña.</h3>
+                <input type="text" name="correo" id="correo" placeholder="correo@gmail.com">
+                <button>Enviar</button>
+            </form>
+        </div>
+    </main>
+    
+    <script src="https://kit.fontawesome.com/dd5e87f640.js" crossorigin="anonymous"></script>
+</body>
+</html>

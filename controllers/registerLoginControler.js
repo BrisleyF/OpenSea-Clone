@@ -17,9 +17,13 @@ exports.registrar = async (req, res) => {
 
 	usuario.save(err => {
 		if (err) {
-			res.status(500).send('ERROR AL REGISTRAR EL USUARIO');
-		} else {
+			const emailDuplicado = User.find({email: email});
 
+			if (emailDuplicado) {
+				res.status(500).render('emailDuplicado', {emailDuplicado, email});
+			}
+
+		} else {
 			res.redirect('/login');
 		}
 	});
@@ -27,7 +31,6 @@ exports.registrar = async (req, res) => {
 };
 
 exports.registro = async (req, res) => {
-	
 
     res.render('register');
 };
@@ -71,4 +74,10 @@ exports.logout = async (req, res) => {
 		res.redirect('/login')
 	});
 	await Carrito.deleteMany();
+};
+
+
+exports.enviarEmailDeRecuperacion = async (req, res) => {
+
+    res.render('enviarEmailRecuperacion');
 };
