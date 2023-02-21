@@ -1,0 +1,15 @@
+main {
+    width: 50%;
+    margin: auto;
+    padding: 2rem 0;
+}
+
+main div {
+    border: 2px solid red;
+    text-align: center;
+    padding: 1rem;
+}
+
+main div p, a {
+    padding-bottom: 1rem;
+}
