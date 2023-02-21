@@ -28,6 +28,8 @@ module.exports = function() {
 
     router.get('/logout', registerLoginController.logout);
 
+    router.get('/enviarEmailRecuperacion', registerLoginController.enviarEmailDeRecuperacion)
+
      // Buscador 
     router.get('/buscar', busquedaController.busqueda);
 
