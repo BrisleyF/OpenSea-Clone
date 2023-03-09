@@ -151,7 +151,7 @@ exports.transferir = async (req, res) => {
 
     } else {
         console.log('El comprador no tiene suficiente saldo en su wallet ')
-        res.redirect(`/subasta/${oferta.articulo}`);
+        res.redirect(`/subasta/${oferta.articulo._id}`);
     }
     
 

@@ -1,0 +1,29 @@
+main {
+    background-color: #f7f7f7;
+    padding: 3rem 0;
+    height: 100vh;
+}
+
+main .contenedor {
+    width: 60%;
+    height: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main .contenedor p, a {
+    padding-bottom: 1rem;
+}
+
+main .contenedor a {
+    text-decoration: none;
+    color: blue;
+}
+
+main .contenedor a:hover {
+    color: grey;
+}

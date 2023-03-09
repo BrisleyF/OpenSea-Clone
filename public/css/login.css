@@ -38,7 +38,6 @@ main .contenedor form input:focus {
 }
 
 main .contenedor form a {
-    width: 50%;
     text-decoration: none;
     text-align: center;
     color: #0075FF;

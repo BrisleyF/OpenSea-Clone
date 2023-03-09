@@ -28,7 +28,13 @@ module.exports = function() {
 
     router.get('/logout', registerLoginController.logout);
 
-    router.get('/enviarEmailRecuperacion', registerLoginController.enviarEmailDeRecuperacion)
+    router.get('/enviarEmailRecuperacion', registerLoginController.formularioEnviarEmailDeRecuperacion);
+
+    router.post('/enviarEmailRecuperacion', registerLoginController.enviarEmailDeRecuperacion);
+
+    router.get('/newPassword/:token', registerLoginController.formularioEnviarContraseña);
+
+    router.post('/newPassword/:token', registerLoginController.enviarNewPassword);
 
      // Buscador 
     router.get('/buscar', busquedaController.busqueda);

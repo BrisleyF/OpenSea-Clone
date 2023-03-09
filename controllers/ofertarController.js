@@ -99,8 +99,8 @@ exports.enviarFormulario = async (req, res) => {
             });
 
         const usuarioOfertante = await User.findOne({_id: userId});    
-        let restarBalance = parseInt(usuarioOfertante.balance) - precio;
-        let sumarBalanceDiferido = parseInt(usuarioOfertante.balanceDiferido) + precio;
+        let restarBalance = parseInt(usuarioOfertante.balance) - parseInt(precio);
+        let sumarBalanceDiferido = parseInt(usuarioOfertante.balanceDiferido) + parseInt(precio);
 
         const actualizarBalance = await User.updateOne(
             {_id: userId},

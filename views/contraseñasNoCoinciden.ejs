@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar contraseña</title>
+    <title>Las contraseña no coinciden</title>
     <%- include('../views/partials/head.ejs'); %>
-    <link rel="stylesheet" href="/css/enviarEmailRecuperacion.css">
+    <link rel="stylesheet" href="/css/contraseñasNoCoinciden.css">
 </head>
 <body>
 
@@ -16,12 +16,8 @@
 
     <main>
         <div class="contenedor">
-            <form action="/enviarEmailRecuperacion" method="post">
-                <h3>Se le enviara un Email con un link para la recuperación de la contraseña.</h3>
-                <label for="">Introducir el correo</label>
-                <input type="email" name="email" id="email" placeholder="correo@gmail.com" required>
-                <button>Enviar</button>
-            </form>
+            <p>Las contraseñas no coinciden.</p>
+            <a href="/newPassword/:token">Volver</a>
         </div>
     </main>
     

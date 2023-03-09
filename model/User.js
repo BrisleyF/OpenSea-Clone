@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
     imageBanner: { type: String },
     balance: { type: Number },
     balanceDiferido: { type: Number },
-    articulos: { type: Array}
+    articulos: { type: Array},
+    resetToken: { type: String }
 
 });
 
