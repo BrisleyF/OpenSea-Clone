@@ -49,13 +49,17 @@ passport.deserializeUser(async(usuario, done) => {
 })
 
 // Multer configuracion
+/*
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/img/uploads'),
     filename: (req, file, cb, filename) => {
         console.log(file);
         cb(null, uuidv4() + path.extname(file.originalname));
     }
-}) 
+})
+*/ 
+
+const storage = multer.memoryStorage();
 app.use(multer({storage}).fields([
 	{ name: 'imageLogoUrl', maxCount: 1 }, { name: 'imageBannerUrl', maxCount: 1 },
 	{ name: 'imagePerfil', maxCount: 1 }, { name: 'imageBanner', maxCount: 1 },
