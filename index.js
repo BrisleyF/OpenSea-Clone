@@ -76,3 +76,6 @@ app.listen(PUERTO, () => {
 });
 
 initDb();
+
+module.exports = app
+
