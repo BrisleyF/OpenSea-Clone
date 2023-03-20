@@ -10,7 +10,7 @@ const multer = require('multer');
 const  {  v4 : uuidv4  }  =  require ( 'uuid' );
 const User = require('./model/User');
 
-const MONGO_URL = 'mongodb://localhost:27017/openSea';
+const MONGO_URL = 'mongodb+srv://admin:admin@cluster0.97j0twi.mongodb.net/?retryWrites=true&w=majority';
 
 if (process.env.NODE_ENV !== 'production') {
 	const dotenv = require('dotenv').config();
