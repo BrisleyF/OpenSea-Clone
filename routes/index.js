@@ -57,7 +57,7 @@ module.exports = function() {
     router.get('/eliminar/articulo/:id', coleccionesController.eliminarArticulo)
 
     // Carrito 
-    router.get('/carrito', carritoController.mostarCarrito)
+    router.get('/carrito', verificarUser, carritoController.mostarCarrito)
 
     router.get('/carrito/agregar/:id', carritoController.agregarAlCarrito);
 
@@ -68,7 +68,7 @@ module.exports = function() {
     router.post('/comprar', carritoController.comprar)
 
     // Perfil
-    router.get('/perfil', perfilController.mostrarPerfil);
+    router.get('/perfil', verificarUser, perfilController.mostrarPerfil);
 
     router.get('/perfil/creado', perfilController.perfilCreado);
 
@@ -79,7 +79,7 @@ module.exports = function() {
     router.post('/perfil/ajustes/:id', perfilController.enviarAjustes);
 
     // Wallet 
-    router.get('/wallet', walletContoller.mostrarWallet);
+    router.get('/wallet', verificarUser, walletContoller.mostrarWallet);
 
     router.post('/depositar', walletContoller.depositarSaldo);
 
