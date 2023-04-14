@@ -120,14 +120,14 @@ exports.agregarArticulo = async (req, res) => {
 
     const { nombre, descripcion } = req.body;
 
-    const result = await cloudinary.v2.uploader.upload(req.files['imageArticulo'][0].path);
+    //const result = await cloudinary.v2.uploader.upload(req.files['imageArticulo'][0].path);
 
     let formato = 'L'
 
     const articulo = new Articulo({
         nombre,
         descripcion,
-        imageArticulo: result.url,
+        imageArticulo: "", //result.url
         creador: userId,
         coleccion: id,
         propietario: userName,
@@ -136,7 +136,7 @@ exports.agregarArticulo = async (req, res) => {
         actividad: [  
             {   
                 evento: 'Agregado',    
-                imageArticulo: result.url,
+                imageArticulo: "", // result.url
                 nombre,
                 coleccion: coleccion.nombre,
                 emisor: 'N/A',
@@ -149,7 +149,7 @@ exports.agregarArticulo = async (req, res) => {
 
     await articulo.save();
 
-    await fs.unlink(req.files['imageArticulo'][0].path)
+    //await fs.unlink(req.files['imageArticulo'][0].path)
     
 
     res.redirect(`/coleccion/${id}`);
